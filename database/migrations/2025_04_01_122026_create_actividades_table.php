@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('actividades', function (Blueprint $table) {
+            $table->id();
+            $table->enum('emergencia', ['si', 'no']);
+            $table->integer('ticket');
+            $table->string('nombre');
+            $table->string('ubicacion');
+            $table->string('inicio');
+            $table->string('fin');
+            $table->enum('estado', ['en proceso', 'terminado']);
+            $table->string('archivo');
+            $table->enum('valorizado', ['si', 'no']);
+            $table->string('cotizacion');
+            $table->enum('actividad_interna', ['si', 'no']);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('actividades');
+    }
+};
