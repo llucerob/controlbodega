@@ -3,15 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proveedores;
+use App\Models\Medidas;
 
 class ProveedoresController extends Controller
 {
+   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+   
+   
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $proveedores = Proveedores::all();
+        return view('proveedores.index', compact('proveedores'));
     }
 
     /**
@@ -19,7 +29,8 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
-        //
+       
+        return view('proveedores.create');
     }
 
     /**
@@ -27,7 +38,16 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedor = new Proveedores();
+        $proveedor->nombre = $request->input('nombre');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->email = $request->input('email');
+        $proveedor->direccion = $request->input('direccion');
+        $proveedor->nombre_contacto = $request->input('nombre_contacto');
+
+        $proveedor->save();
+        return redirect()->route('proveedores.index')->with('success', 'Proveedor creado exitosamente.');
+
     }
 
     /**
@@ -35,7 +55,8 @@ class ProveedoresController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $proveedor = Proveedores::findOrFail($id);
+        return view('proveedores.show', compact('proveedor'));
     }
 
     /**
@@ -43,7 +64,8 @@ class ProveedoresController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $proveedor = Proveedores::findOrFail($id);
+        return view('proveedores.edit', compact('proveedor'));
     }
 
     /**
@@ -51,7 +73,15 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $proveedor = Proveedores::findOrFail($id);
+        $proveedor->nombre = $request->input('nombre');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->email = $request->input('email');
+        $proveedor->direccion = $request->input('direccion');
+        $proveedor->nombre_contacto = $request->input('nombre_contacto');
+
+        $proveedor->save();
+        return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado exitosamente.');
     }
 
     /**
@@ -59,6 +89,12 @@ class ProveedoresController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $proveedor = Proveedores::findOrFail($id);
+        if ($proveedor) {
+            $proveedor->delete();
+            return redirect()->route('proveedores.index')->with('success', 'Proveedor eliminado exitosamente.');
+        } else {
+            return redirect()->route('proveedores.index')->with('error', 'Proveedor no encontrado.');
+        }
     }
 }

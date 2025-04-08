@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,6 +44,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        $user->roles()->attach(Role::where('name', 'jefe')->first());
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
