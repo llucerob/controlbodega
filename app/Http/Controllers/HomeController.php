@@ -2,16 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        if(auth()->user()->hasRole('admin')) {
+            return view('home');
+        } else {
+            return view('home');
+        }
     }
 
     /**
