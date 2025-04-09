@@ -97,4 +97,6 @@ class ProveedoresController extends Controller
             return redirect()->route('proveedores.index')->with('error', 'Proveedor no encontrado.');
         }
     }
+
+
 }
