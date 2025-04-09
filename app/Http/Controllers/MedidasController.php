@@ -8,17 +8,14 @@ use App\Models\Medida;
 class MedidasController extends Controller
 {
     
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $medidas = Medida::all();
-        return view('medidas.index', compact('medidas'));
+        return view('medidas.listar', compact('medidas'));
     }
 
     /**
@@ -36,7 +33,7 @@ class MedidasController extends Controller
     {
         $newMedida = new Medida();
         $newMedida->nombre = $request->nombre;
-        $newMedida->abreviatura = $request->abreviatura;
+        $newMedida->abreviatura = $request->abreviacion;
         $newMedida->save();
         
         return redirect()->route('medidas.index')->with('success', 'Medida creada correctamente');

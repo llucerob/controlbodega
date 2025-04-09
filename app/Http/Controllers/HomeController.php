@@ -11,24 +11,25 @@ use App\Models\Actividad;
 class HomeController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        if(Auth::user()->hasRole('admin')) {
+        
+        
+        
+        
+        if(auth()->user()->hasRole('admin')) {
             return view('dashboard.admin');
-        } else-if(Auth::user()->hasRole('supervisor')) {
-            return view('dashboard.supervisor')
-        } else-if(Auth::user()->hasRole('bodega')) {
-            return view('dashboard.bodega')
-        } else-if(Auth::user()->hasRole('secretaria')) {
-            return view('dashboard.secretaria')
+        } elseif(auth()->user()->hasRole('supervisor')) {
+            return view('dashboard.supervisor');
+        } elseif(auth()->user()->hasRole('bodega')) {
+            return view('dashboard.bodega');
+        } elseif(auth()->user()->hasRole('secretaria')) {
+            return view('dashboard.secretaria');
         } else {
             return view('home');
         }

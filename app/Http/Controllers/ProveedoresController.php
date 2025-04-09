@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Proveedores;
+use App\Models\Proveedor;
 use App\Models\Medidas;
+
+
 
 class ProveedoresController extends Controller
 {
    
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
    
    
     /**
@@ -20,9 +19,36 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $proveedores = Proveedores::all();
-        return view('proveedores.index', compact('proveedores'));
+        $proveedores = Proveedor::all();
+        return view('proveedores.listar', compact('proveedores'));
     }
+
+    public function ajaxproveedores(){
+
+
+        $prov = Proveedor::all();
+        $arr = [];
+
+        foreach($prov  as $key => $b ){
+            $arr[$key]['id']                  = $b->id;
+            $arr[$key]['nombre']              = $b->nombre;
+            $arr[$key]['direccion']           = $b->direccion;
+            $arr[$key]['nombre_contacto']     = $b->nombre_contacto;
+            $arr[$key]['telefono']            = $b->telefono;
+            $arr[$key]['mail']                = $b->email;
+               
+        }
+
+        
+
+           //dd($arr);
+        
+        return DataTables($arr)->tojson();
+
+
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +56,7 @@ class ProveedoresController extends Controller
     public function create()
     {
        
-        return view('proveedores.create');
+        return view('proveedores.crear');
     }
 
     /**
@@ -38,12 +64,12 @@ class ProveedoresController extends Controller
      */
     public function store(Request $request)
     {
-        $proveedor = new Proveedores();
+        $proveedor = new Proveedor();
         $proveedor->nombre = $request->input('nombre');
         $proveedor->telefono = $request->input('telefono');
-        $proveedor->email = $request->input('email');
+        $proveedor->email = $request->input('mail');
         $proveedor->direccion = $request->input('direccion');
-        $proveedor->nombre_contacto = $request->input('nombre_contacto');
+        $proveedor->nombre_contacto = $request->input('contacto');
 
         $proveedor->save();
         return redirect()->route('proveedores.index')->with('success', 'Proveedor creado exitosamente.');
@@ -55,7 +81,7 @@ class ProveedoresController extends Controller
      */
     public function show(string $id)
     {
-        $proveedor = Proveedores::findOrFail($id);
+        $proveedor = Proveedor::findOrFail($id);
         return view('proveedores.show', compact('proveedor'));
     }
 
@@ -64,7 +90,7 @@ class ProveedoresController extends Controller
      */
     public function edit(string $id)
     {
-        $proveedor = Proveedores::findOrFail($id);
+        $proveedor = Proveedor::findOrFail($id);
         return view('proveedores.edit', compact('proveedor'));
     }
 
@@ -73,7 +99,7 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $proveedor = Proveedores::findOrFail($id);
+        $proveedor = Proveedor::findOrFail($id);
         $proveedor->nombre = $request->input('nombre');
         $proveedor->telefono = $request->input('telefono');
         $proveedor->email = $request->input('email');
@@ -89,12 +115,14 @@ class ProveedoresController extends Controller
      */
     public function destroy(string $id)
     {
-        $proveedor = Proveedores::findOrFail($id);
+        $proveedor = Proveedor::findOrFail($id);
         if ($proveedor) {
             $proveedor->delete();
+            
             return redirect()->route('proveedores.index')->with('success', 'Proveedor eliminado exitosamente.');
         } else {
-            return redirect()->route('proveedores.index')->with('error', 'Proveedor no encontrado.');
+            
+            return redirect()->route('proveedores.index')->with('warning', 'Proveedor no ha sido eliminado');;
         }
     }
 
