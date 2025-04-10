@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('actividades', function (Blueprint $table) {
             $table->id();
             $table->enum('emergencia', ['si', 'no']);
-            $table->integer('ticket');
+            $table->integer('ticket')->nullable();
             $table->string('nombre');
             $table->string('ubicacion');
             $table->string('inicio');
             $table->string('fin');
-            $table->enum('estado', ['en proceso', 'terminado']);
+            $table->enum('estado', ['en proceso', 'terminado'])->default('en proceso');
             $table->string('archivo');
             $table->enum('valorizado', ['si', 'no']);
             $table->string('cotizacion');
@@ -36,3 +36,4 @@ return new class extends Migration
         Schema::dropIfExists('actividades');
     }
 };
+º

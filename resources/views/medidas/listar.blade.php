@@ -73,13 +73,10 @@
                     <h5>Nueva Medida</h5>
                 </div>
                 <div class="card-body">
-                    <form class="card" action="{{route('medidas.store')}}" method="POST" enctype="multipart/form-data">
+                    <form  action="{{route('medidas.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf	
-                        <div class="card-header">
-                            <h4 class="card-title mb-0">Nueva Medida</h4>
-                            <div class="card-options"><a class="card-options-collapse" href="#" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-toggle="card-remove"><i class="fe fe-x"></i></a></div>
-                        </div>
-                        <div class="card-body">
+                        
+                        
                             <div class="row">
                                 
                                 
@@ -101,7 +98,7 @@
                                 
                                 
                             </div>
-                        </div>
+                        
                         <div class="card-footer text-right">
                             <button class="btn btn-primary" type="submit">Crear Medida</button>
                         </div>

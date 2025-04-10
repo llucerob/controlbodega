@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('valor');
             $table->foreignId('medida_id')->constrained('medidas')->onDelete('cascade');
             $table->float('por_devolver',11,2)->default('0');
-            $table->float('devolucion',11,2)->defaul('0');
+            $table->float('devolucion',11,2)->default('0');
             $table->timestamps();
         });
     }

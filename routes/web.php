@@ -5,7 +5,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedidasController;
 use App\Http\Controllers\MaterialesController;
-use App\Http\Controllers\ActividadController;
+
+use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\ProveedoresController;
 
 Route::get('/', function () {
@@ -47,6 +48,18 @@ route::post('store-material', [MaterialesController::class, 'store'])->name('mat
 route::get('editar-material/{id}', [MaterialesController::class, 'edit'])->name('materiales.edit');
 route::post('update-material/{id}', [MaterialesController::class, 'update'])->name('materiales.update');    
 route::get('destroy-material/{id}', [MaterialesController::class, 'destroy'])->name('materiales.destroy');
+
+
+//actividades
+
+route::get('listar-actividades', [ActividadesController::class, 'index'])->name('actividades.index');
+route::get('ajax-actividades', [ActividadesController::class, 'ajaxactividades'])->name('actividades.ajax');
+route::get('crear-actividad', [ActividadesController::class, 'create'])->name('actividades.create');
+route::post('store-actividad', [ActividadesController::class, 'store'])->name('actividades.store');
+route::get('editar-actividad/{id}', [ActividadesController::class, 'edit'])->name('actividades.edit');
+route::post('update-actividad/{id}', [ActividadesController::class, 'update'])->name('actividades.update');
+
+route::post('create2-actividad',[ActividadesController::class, 'create2'])->name('actividades.create2');
 
 
 

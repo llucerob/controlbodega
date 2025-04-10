@@ -73,8 +73,8 @@
                             </svg><span>Actividades </span></a>
                         <ul class="sidebar-submenu">
                             
-                            <li><a href="#">Listar Actividades</a></li>
-                            <li><a href="#">Create new</a></li>
+                            <li><a href="{{ route('actividades.index')}}">Listar Actividades</a></li>
+                            <li><a href="{{ route('actividades.create')}}">Crear Actividad</a></li>
                         </ul>
                     </li>
                    
