@@ -34,7 +34,19 @@ route::get('ajax-proveedores', [ProveedoresController::class, 'ajaxproveedores']
 route::get('crear-proveedor', [ProveedoresController::class, 'create'])->name('proveedores.create');
 route::post('store-proveedor', [ProveedoresController::class, 'store'])->name('proveedores.store');
 route::get('editar-proveedor/{id}', [ProveedoresController::class, 'edit'])->name('proveedores.edit');
+route::post('update-proveedor/{id}', [ProveedoresController::class, 'update'])->name('proveedores.update');
 route::get('destroy-proveedor/{id}', [ProveedoresController::class, 'destroy'])->name('proveedores.destroy');
+
+
+//materiales
+
+route::get('listar-materiales', [MaterialesController::class, 'index'])->name('materiales.index');
+route::get('ajax-materiales', [MaterialesController::class, 'ajaxmateriales'])->name('materiales.ajax');
+route::get('crear-material', [MaterialesController::class, 'create'])->name('materiales.create');
+route::post('store-material', [MaterialesController::class, 'store'])->name('materiales.store');
+route::get('editar-material/{id}', [MaterialesController::class, 'edit'])->name('materiales.edit');
+route::post('update-material/{id}', [MaterialesController::class, 'update'])->name('materiales.update');    
+route::get('destroy-material/{id}', [MaterialesController::class, 'destroy'])->name('materiales.destroy');
 
 
 

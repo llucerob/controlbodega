@@ -19,7 +19,7 @@
  @yield('scripts')
  <script src="{{ asset('assets/js/script.js') }}"></script>
  <script src="{{ asset('assets/js/script1.js') }}"></script>
- <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
+ 
 
  <script src="{{ asset('assets/js/notify/index.js') }}"></script>
 

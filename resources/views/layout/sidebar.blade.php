@@ -92,12 +92,12 @@
                                 <use href="{{ asset('assets/svg/icon-sprite.svg#fill-form') }}"> </use>
                             </svg><span>Materiales</span></a>
                         <ul class="sidebar-submenu">
-                            <li><a href="#">Listar Materiales</a></li>
-                            <li><a href="#">Crear Nuevo Material</a></li>
+                            <li><a href="{{ route('materiales.index') }}">Listar Materiales</a></li>
+                            <li><a href="{{ route('materiales.create') }}">Crear Nuevo Material</a></li>
                             <li><a href="#">Crear Consolidado</a></li>
                             <li><a href="#">Recibir Devolucion</a></li>
                             <li><a href="#">Consolidado sin Stock</a></li>
-                            
+                    
                         </ul>
                     </li>
                     

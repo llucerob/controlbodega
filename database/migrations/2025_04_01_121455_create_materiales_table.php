@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('materiales', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('valor_unitario');
+            $table->integer('valor_unitario')->default('0');
             $table->string('marca');
-            $table->float('cantidad',11,1);
+            $table->float('cantidad',11,1)->default('0');
             $table->foreignId('medida')->constrained('medidas')->onDelete('cascade');
             $table->string('min_stock');
             $table->timestamps();

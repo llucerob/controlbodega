@@ -17,8 +17,29 @@ class MaterialesController extends Controller
     public function index()
     {
         $materiales = Material::all();
-        return view('materiales.index', compact('materiales'));
+        return view('materiales.listar', compact('materiales'));
 
+    }
+    public function ajaxmateriales(Request $request)
+    {
+        $materiales = Material::all();
+        $arr = [];
+        foreach ($materiales as $material) {
+            $arr[] = [
+                'id' => $material->id,
+                'nombre' => $material->nombre,
+                'marca' => $material->marca,
+                'valor_unitario' => '$ '.$material->valor_unitario,
+                'cantidad' => $material->cantidad.' ['.$material->esmedida->abreviatura.']',
+                'min_stock' => $material->min_stock,
+                'valorcantidad' => $material->cantidad,                
+            ];
+        }
+
+        //dd($arr);
+        return DataTables($arr)->tojson();
+        ;
+        
     }
 
     /**
@@ -27,7 +48,7 @@ class MaterialesController extends Controller
     public function create()
     {
         $medidas = Medida::all();
-        return view('materiales.create', compact('medidas'));
+        return view('materiales.crear', compact('medidas'));
     }
 
     /**
@@ -37,7 +58,7 @@ class MaterialesController extends Controller
     {
         $newMaterial                    = new Material();
         $newMaterial->nombre            = $request->input('nombre');
-        $newMaterial->valor_unitario    = $request->input('valor_unitario');
+        $newMaterial->valor_unitario    = 0;
 
         if($request->input('marca') == '') {
             $newMaterial->marca = 'No especificada';
@@ -47,7 +68,7 @@ class MaterialesController extends Controller
         $newMaterial->cantidad          = 0;
         
         $newMaterial->medida            = $request->input('medida');
-        $newMaterial->min_stock         = $request->input('min_stock');
+        $newMaterial->min_stock         = $request->input('stock');
         $newMaterial->save();
         return redirect()->route('materiales.index')->with('success', 'Material creado correctamente');
     }

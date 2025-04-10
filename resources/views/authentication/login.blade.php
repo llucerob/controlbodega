@@ -17,11 +17,11 @@
                         <div class="login-main">
                             <form class="theme-form"  method="POST" action="{{ route('login') }}">
                              @csrf
-                                <h4>Sign in to account</h4>
-                                <p>Enter your email & password to login</p>
+                                <h4>Iniciar Sesión</h4>
+                                <p>Ingrese sus credenciales</p>
 
                                 <div class="form-group">
-                                    <label class="col-form-label">Email Address</label>
+                                    <label class="col-form-label">Correo Electrónico</label>
                                     <input id="email" type="email"  class="form-control @error('email') is-invalid @enderror" name="email" value="admin@example.com" required autocomplete="email" autofocus placeholder="test@gmail.com">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label">Password</label>
+                                    <label class="col-form-label">Contraseña</label>
                                     <div class="form-input position-relative">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="123456789" required autocomplete="current-password"
                                             placeholder="*********">
@@ -47,7 +47,7 @@
                                     <div class="form-check">
                                     </div>
                                     @if (Route::has('password.request'))
-                                        <a class="link" href="#">Forgot password?</a>
+                                        <a class="link" href="#">¿Olvidó su Contraseña?</a>
                                     @endif
                                     <div class="text-end">
                                         <button class="btn btn-primary btn-block w-100 mt-3 spinner-btn" type="submit">Sign in</button>

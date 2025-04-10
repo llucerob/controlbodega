@@ -16,7 +16,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Proveedores</h3>
+                    <h3>Materiales</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                                 <svg class="stroke-icon">
                                     <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                                 </svg></a></li>
-                        <li class="breadcrumb-item">Proveedores</li>
+                        <li class="breadcrumb-item">Materiales</li>
                         <li class="breadcrumb-item active">Listar</li>
                     </ol>
                 </div>
@@ -38,18 +38,17 @@
             <div class="col-md-12 mb-4">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Todos Los Proveedores</h5>
+                        <h5>Todos Los Materiales</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive ">
-                            <table id="proveedores" class="table table-bordered  table-striped">
+                            <table id="materiales" class="table table-bordered  table-striped">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Nombre</th>
-                                        <th class="text-center">Dirección</th>
-                                        <th class="text-center">Contacto</th>
-                                        <th class="text-center">Teléfono</th>
-                                        <th class="text-center">Mail</th>
+                                        <th class="text-center">Marca</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-center">Valor Unitario</th>
                                         <th class="text-center">Acciones</th>
                                         
                                     </tr>
@@ -97,18 +96,17 @@
     <script>
         $(document).ready(function(){
 
-            var tabla = $('#proveedores').DataTable({
+            var tabla = $('#materiales').DataTable({
                 language: {
                         url: '//cdn.datatables.net/plug-ins/2.2.2/i18n/es-ES.json',
                      },
                 
-                    ajax: '{{route('proveedores.ajax')}}',
+                    ajax: '{{route('materiales.ajax')}}',
                     columns: [
                         {data: 'nombre'},
-                        {data: 'direccion'},
-                        {data: 'nombre_contacto'},
-                        {data: 'telefono'},
-                        {data: 'mail'},
+                        {data: 'marca'},
+                        {data: 'cantidad'},
+                        {data: 'valor_unitario'},
                         {
                             data: null,
                             defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="eliminar btn btn-danger btn-sm m-1" title="eliminar"><i class="fas fa-trash-alt"></i></button>',
@@ -121,8 +119,8 @@
                         
                 });
 
-            obtener_data_eliminar('#proveedores', tabla);
-            obtener_data_editar('#proveedores', tabla);
+            obtener_data_eliminar('#materiales', tabla);
+            obtener_data_editar('#materiales', tabla);
            
             
         });
@@ -138,7 +136,7 @@
         var obtener_data_editar = function(tbody, tabla){
             $(tbody).on ('click', 'button.editar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
-                location.href = "editar-proveedor/"+data.id;
+                location.href = "editar-material/"+data.id;
                
                 
             })

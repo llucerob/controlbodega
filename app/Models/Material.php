@@ -36,9 +36,9 @@ class Material extends Model
                     ->withTimestamps();
     }
 
-    public function medida(): BelongsTo
+    public function esmedida(): BelongsTo
     {
-        return $this->belongsTo(Medida::class, 'medida_id');
+        return $this->belongsTo(Medida::class, 'medida');
     }
 
 

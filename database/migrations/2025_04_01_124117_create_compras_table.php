@@ -18,8 +18,8 @@ return new class extends Migration
             $table->float('cantidad',11,2);
             $table->foreignId('medida_id')->constrained('medidas')->onDelete('cascade');
             $table->integer('valor_unitario');
-            $table->string('fecha_compra');
-            $table->integer('factura');
+            $table->string('fecha_compra')->nullable();
+            $table->integer('factura')->nullable();
             $table->timestamps();
         });
     }
