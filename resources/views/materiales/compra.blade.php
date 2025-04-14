@@ -27,25 +27,25 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row starter-main">
+    <div class="container-fluid pb-3">
+        <div class="row starter-main pb-3">
 
-            <form class="card" action="{{ route('materiales.compra' ) }}" method="POST" enctype="multipart/form-data">
+            <form class="card" action="{{ route('materiales.setcompra', $material->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf	
                 <div class="card-header">
                     <h4 class="card-title mb-0">Nueva Compra para el Producto " {{$material->nombre}} "</h4>
                     
-                    <div class="card-options"><a class="card-options-collapse" href="#" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+                    <p>Tenga en cuenta se registrará en la unidad de medida establecida en la bodega para este material,<strong> ( [{{$material->esmedida->nombre}}] )</strong>, si usted compró  en otra unidad debe registrar la compra en la sección compras. </p>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         
-                        <input hidden type="text" name=id_material value="{{$material->id}}">
+                        
 
-                        <div class="col-sm-12 col-md-12">
+                        <div class="col-sm-12 col-md-6">
                             <div class="form-group mb-3">
                                 <label class="form-label">Proveedor</label>
-                                <select required  class="form-control proveedores" name="id_proveedor">
+                                <select required  class="form-control proveedores" name="proveedor_id">
                                     
                                     @foreach ($proveedores as $p)
                                         <option value="{{$p->id }}" >{{$p->nombre}}</option>
@@ -56,21 +56,37 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label">N° Factura</label>
+                                <input required type="number" min="0" name="factura" class="form-control">
+                            </div>
+                        </div>
 
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-3">
                             <div class="form-group mb-3">
                                 <label class="form-label">Cantidad</label>
-                                <input required type="text" name="cantidad" class="form-control">
+                                <input required type="number" min="0" name="cantidad" class="form-control">
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-3">
                             <div class="form-group mb-3">
                                 <label class="form-label">Valor Unitario</label>
-                                <input required type="number" name="valor_unitario" class="form-control">
+                                <input required type="number" min="0" name="valor_unitario" class="form-control">
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group mb-3">
+                                <label class="form-label">¿Agregar IVA?</label>
+                                <div class="">
+                                    <label class="switch">
+                                    <input type="checkbox" name="iva"><span class="switch-state"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
                             <div class="form-group mb-3">
                                 <label class="form-label">Fecha Compra</label>
                                 <input required type="date" name="fecha_compra" class="form-control">
@@ -85,7 +101,7 @@
                         
                     </div>
                 </div>
-                <div class="card-footer text-right">
+                <div class="card-footer text-right ">
                     <button class="btn btn-primary" type="submit">Registrar Compra</button>
                 </div>
             </form>
@@ -101,5 +117,6 @@
 @endsection
 
 @section('scripts')
-
+<script src="{{asset('assets/js/touchspin/touchspin.js')}}"></script>
+<script src="{{asset('assets/js/touchspin/input-groups.min.js')}}"></script>
 @endsection

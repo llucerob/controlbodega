@@ -20,4 +20,8 @@ class Compra extends Model
     {
         return $this->hasOne(Material::class, 'id', 'material_id');
     }
+    public function medida(): HasOne
+    {
+        return $this->hasOne(Medida::class, 'id', 'medida_id');
+    }
 }

@@ -16,7 +16,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Materiales</h3>
+                    <h3>Actividades</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                                 <svg class="stroke-icon">
                                     <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                                 </svg></a></li>
-                        <li class="breadcrumb-item">Materiales</li>
+                        <li class="breadcrumb-item">Actividades</li>
                         <li class="breadcrumb-item active">Listar</li>
                     </ol>
                 </div>
@@ -32,23 +32,26 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row starter-main">
             
-            <div class="col-md-12">
+            <div class="col-md-12 ">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Todos Los Materiales</h5>
+                        <h5>Todas Las actividades</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive ">
-                            <table id="materiales" class="table table-bordered  table-striped">
+                            <table id="actividades" class="table table-bordered  table-striped">
                                 <thead>
                                     <tr>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Emergencia</th>
+                                        <th class="text-center">Ticket</th>
                                         <th class="text-center">Nombre</th>
-                                        <th class="text-center">Marca</th>
-                                        <th class="text-center">Cantidad</th>
-                                        <th class="text-center">Valor Unitario</th>
+                                        <th class="text-center">Ubicación</th>
+                                        <th class="text-center">Inicio</th>
+                                        <th class="text-center">Estado</th>
                                         <th class="text-center">Acciones</th>
                                         
                                     </tr>
@@ -66,10 +69,10 @@
                                                   <div class="modal-img text-center">
                                                      <img src="{{asset('assets/images/gif/danger.gif')}}"  width="100px" alt="error">
                                                   </div>
-                                                  <h4 class="text-center">¿Realmente desea Eliminar este proveedor?</h4>
+                                                  <h4 class="text-center pb-2">¿Realmente desea Eliminar este proveedor?</h4>
                                                   <p class="text-center">Esta acción no se puede deshacer</p>
                                                   
-                                                    <a class="btn btn-danger d-flex m-auto pb-10" href="">Eliminar</a>
+                                                    <a class="btn btn-danger d-flex m-auto" href="">Eliminar</a>
                                                  
                                                 </div>
                                             </div>                                                   
@@ -77,12 +80,10 @@
                                     </div>
                                 </div>
                             </table>
-                        </div>
                     </div>
-
                 </div>
-            
             </div>
+            
         </div>
     </div>
     <!-- Container-fluid Ends-->
@@ -98,20 +99,23 @@
     <script>
         $(document).ready(function(){
 
-            var tabla = $('#materiales').DataTable({
+            var tabla = $('#actividades').DataTable({
                 language: {
                         url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },
                 
-                    ajax: '{{route('materiales.ajax')}}',
+                    ajax: '{{route('actividades.ajax')}}',
                     columns: [
+                        {data: 'id'},
+                        {data: 'emergencia'},
+                        {data: 'ticket'},
                         {data: 'nombre'},
-                        {data: 'marca'},
-                        {data: 'cantidad'},
-                        {data: 'valor_unitario'},
+                        {data: 'ubicacion'},
+                        {data: 'inicio'},
+                        {data: 'estado'},
                         {
                             data: null,
-                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="comprar btn btn-success btn-sm m-1" title="comprar"><i class="fa-solid fa-dollar"></i></button><button class="eliminar btn btn-danger btn-sm m-1" title="eliminar"><i class="fas fa-trash-alt"></i></button><button class="listarcompras btn btn-warning btn-sm m-1" title="listarcompras"><i class="fa-solid fa-shopping-basket"></i></button><button class="rutamaterial btn btn-secondary btn-sm m-1" title="rutamaterial"><i class="fa-solid fa-book"></i></button>',
+                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="reservar btn btn-danger btn-sm m-1" title="Reservar Material"><i class="fa-solid fa-plus"></i></button><button class="ver btn btn-secondary btn-sm m-1" title="Materiales Ocupados"><i class="fa-solid fa-eye"></i></button><button class="devolver btn btn-info btn-sm m-1" title="Devolucion Material"><i class="fa-solid fa-backward"></i></button><button class="cerrar btn btn-success btn-sm m-1" title="Cerrar Actividad"><i class="far fa-thumbs-up"></i></button>',
                            
                                 
                             },
@@ -121,11 +125,9 @@
                         
                 });
 
-            obtener_data_eliminar('#materiales', tabla);
+            obtener_data_eliminar('#actividades', tabla);
             obtener_data_editar('#materiales', tabla);
-            obtener_data_comprar('#materiales',tabla);
-            obtener_data_listarcompras('#materiales',tabla);
-            obtener_data_rutamaterial('#materiales',tabla);
+            obtener_data_reservar('#actividades',tabla);
            
             
         });
@@ -138,10 +140,10 @@
                 
             })
         }
-        var obtener_data_comprar = function(tbody, tabla){
-            $(tbody).on ('click', 'button.comprar',function(){
+        var obtener_data_reservar = function(tbody, tabla){
+            $(tbody).on ('click', 'button.reservar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
-                location.href = "comprar-material/"+data.id;
+                location.href = "reservar-material/"+data.id;
                
                 
             })
@@ -150,23 +152,6 @@
             $(tbody).on ('click', 'button.editar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
                 location.href = "editar-material/"+data.id;
-               
-                
-            })
-        }
-
-        var obtener_data_listarcompras = function(tbody, tabla){
-            $(tbody).on ('click', 'button.listarcompras',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "compras-material/"+data.id;
-               
-                
-            })
-        }
-        var obtener_data_rutamaterial = function(tbody, tabla){
-            $(tbody).on ('click', 'button.rutamaterial',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "compras-material/"+data.id;
                
                 
             })

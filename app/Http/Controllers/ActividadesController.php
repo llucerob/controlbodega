@@ -9,6 +9,7 @@ use App\Models\Actividad;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ActividadesController extends Controller
 {
@@ -31,7 +32,7 @@ class ActividadesController extends Controller
         $arr = [];
         foreach($act as $key => $a){
             $arr[$key]['id'] = $a->id;
-            if($a->emergencia == 1){
+            if($a->emergencia == 'si'){
                 $arr[$key]['emergencia'] = 'Es Emergencia';
             }else{
                 $arr[$key]['emergencia'] = 'No es emergencia';
@@ -46,21 +47,15 @@ class ActividadesController extends Controller
             $arr[$key]['nombre'] = $a->nombre;
             $arr[$key]['ubicacion'] = $a->ubicacion;
             $arr[$key]['inicio'] = $a->inicio;
-            if($a->activo == 1){
-                $arr[$key]['estado'] = 'Activo';
-            }else{
-                $arr[$key]['estado'] = 'Terminado';
-            }
+            $arr[$key]['estado'] = $a->estado;
             
         }
         
-        $valor = [];
+     
         
+         
         
-        $valo['draw'] = 0;
-        $valor['data'] = $arr;  
-        
-        return $valor;
+        return DataTables($arr)->tojson();
         
     }
 
@@ -79,7 +74,7 @@ class ActividadesController extends Controller
             if($m->cantidad > 0)
             {
                 $lista[$key]['id'] = $m->id;
-                $lista[$key]['text'] = $m->nombre.'    '.$m->cantidad.' '.' ['.$m->medida.'] Disponible';
+                $lista[$key]['text'] = $m->nombre.'    '.$m->cantidad.' '.' ['.$m->esmedida->abreviatura.'] Disponible';
             }
 
             
@@ -115,36 +110,21 @@ class ActividadesController extends Controller
 
         foreach($request->materiales as $key => $m)
         {
-            $arr_material[$key] = Material::findOrFail($m);
-        }
-
-        
-
-        //$ids =[];
-        //dd($material);
-
-       /*foreach($material as $key => $mat){
-            if(isset($mat['check'])){
-                          
-                $arr_material[$key]['id']       = $mat['id'];
-                $arr_material[$key]['nombre']   = $mat['nombre'];
-                $arr_material[$key]['cantidad'] = $mat['cantidad'];
-                $arr_material[$key]['medida']   = $mat['medida']; 
-                $ids[] = $mat['id']; 
+            $a = Material::findOrfail($m);
+            $arr_material[$key]['id'] = $a->id;
+            $arr_material[$key]['nombre'] = $a->nombre;
+            $arr_material[$key]['cantidad'] = $a->cantidad;
+            $arr_material[$key]['medida'] = $a->esmedida->abreviatura;
             }
-            
-        
-        }*/
 
         
-
         //dd($ocupados);
 
        
         
      
 
-        return view('actividades.paso2create', compact('lista'));
+        return view('actividades.create2', compact('arr_material', 'actividad'));
     }
 
     /**
@@ -170,19 +150,20 @@ class ActividadesController extends Controller
         }else{
 
             $new_actividad->emergencia = 'si';
-            $new_actividad->ticket="null";
+            $new_actividad->ticket=null;
             
         }
 
 
         if($actividad['interna'] == 'si'){
-            $new_actividad->interna = 'si';
+            $new_actividad->interna = 'si'; 
             $new_actividad->emergencia = 'no';
-            $new_actividad->ticket = "null";
+            $new_actividad->ticket = null;
         }
         $new_actividad->ubicacion = $actividad['ubicacion'];
-        $new_actividad->inicio = $actividad['inicio'];
-        $new_actividad->activo = 'si';
+        $new_actividad->inicio = Carbon::parse($actividad['inicio'])->format('Y-m-d');
+        $new_actividad->estado = 'en proceso';
+       
 
 
 
@@ -192,12 +173,12 @@ class ActividadesController extends Controller
 
 foreach($ocupados as $p){
             $material = Material::find($p['id']);
-            //$material->cantidad = $material->cantidad - $p['cantidad'];
+            
+            $new_actividad->reservados()->attach($p['id'], ['cantidad'=>$p['cantidad'], 'valor'=>$material->valor_unitario, 'medida_id'=>$material->esmedida->id]);
+            
+            $material->cantidad = $material->cantidad - $p['cantidad'];
 
-            //$material->update();*/
-
-            $new_actividad->ocupados()->attach($p['id'], ['cantidad'=>$p['cantidad'], 'valor'=>$material->valor_unitario, 'medida'=>$p['medida_id']]);
-
+            $material->update();
 
         }
 

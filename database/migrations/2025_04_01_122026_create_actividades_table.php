@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('ubicacion');
             $table->string('inicio');
-            $table->string('fin');
-            $table->enum('estado', ['en proceso', 'terminado'])->default('en proceso');
-            $table->string('archivo');
+            $table->string('fin')->nullable();
+            $table->enum('estado', ['en proceso', 'terminado', 'valorizado'])->default('en proceso');
+            $table->string('archivo')->nullable();
             $table->enum('valorizado', ['si', 'no']);
-            $table->string('cotizacion');
+            $table->string('cotizacion')->nullable();
             $table->enum('actividad_interna', ['si', 'no']);
             $table->timestamps();
         });

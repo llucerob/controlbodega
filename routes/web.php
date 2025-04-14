@@ -48,8 +48,17 @@ route::post('store-material', [MaterialesController::class, 'store'])->name('mat
 route::get('editar-material/{id}', [MaterialesController::class, 'edit'])->name('materiales.edit');
 route::post('update-material/{id}', [MaterialesController::class, 'update'])->name('materiales.update');    
 route::get('destroy-material/{id}', [MaterialesController::class, 'destroy'])->name('materiales.destroy');
-
-
+route::get('comprar-material/{id}', [MaterialesController::class, 'vistacompra'])->name('materiales.comprar');
+route::post('setcompra-material/{id}', [MaterialesController::class, 'agregarcompra'])->name('materiales.setcompra');
+route::get('compras-material/{id}', [MaterialesController::class, 'listarcompras'])->name('materiales.listacompras');
+route::get('ajax-comprasmaterial/{id}', [MaterialesController::class, 'ajaxcomprasmaterial'])->name('materiales.ajaxcomprasmaterial');
+route::get('consultacompras-material', [MaterialesController::class, 'consultacompras'])->name('materiales.consultacompras');
+route::post('consultar-comprafecha', [MaterialesController::class, 'consultarcomprafecha'])->name('materiales.consultarcomprafecha');
+route::get('reservados-materiales', [MaterialesController::class, 'reservados'])->name('materiales.reservados');
+route::get('reservados-entrega/{id}', [MaterialesController::class, 'reservadosentrega'])->name('materiales.reservadosentrega');
+route::get('reservar-material/{id}', [MaterialesController::class, 'reservar'])->name('materiales.reservar');
+route::post('reservar2-material', [MaterialesController::class, 'reservar2'])->name('materiales.reservar2');
+route::post('setreservar-material', [MaterialesController::class, 'setreservar'])->name('materiales.setreservar');
 //actividades
 
 route::get('listar-actividades', [ActividadesController::class, 'index'])->name('actividades.index');

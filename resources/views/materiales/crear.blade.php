@@ -28,10 +28,10 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row starter-main">
+    <div class="container-fluid m-10">
+        <div class="row starter-main p-20 ">
 
-            <div class="col-md-12">
+            <div class="col-md-12 m-10">
                 <form class="card" action="{{route('materiales.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf	
                         <div class="card-header">
@@ -77,7 +77,7 @@
     
     
                                 <div class="col-sm-4 col-md-4">
-                                    <div class="form-group mb-3">
+                                    <div class="form-group ">
                                         <label class="form-label">Limite de Stock</label>
                                         <input required class="form-control" type="number" min="0" name="stock"  placeholder="Ingrese Limite Stock">
                                     </div>

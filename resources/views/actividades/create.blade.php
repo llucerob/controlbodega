@@ -29,9 +29,9 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row starter-main">
-            <div class="col-lg-12">
+    <div class="container-fluid m-20">
+        <div class="row starter-main p-10">
+            <div class="col-sm-12 p-10">
                 <form class="card" action="{{ route('actividades.create2')}}" method="POST" enctype="multipart/form-data">
                         @csrf	
                        

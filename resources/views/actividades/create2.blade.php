@@ -31,8 +31,8 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row starter-main">
+    <div class="container-fluid m-20">
+        <div class="row starter-main p-10">
 
             <form class="card" action="{{route('actividades.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf	
@@ -62,7 +62,7 @@
                         </div>
                         
                         
-                        @if($actividad['interna'] == 1)
+                        @if($actividad['interna'] == 'si')
 
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group  mb-3">
@@ -121,12 +121,12 @@
                                 </thead>
                                 <tbody>
                                     
-                                    @foreach ($ocupados as $key => $material)
+                                    @foreach ($arr_material as $key => $material)
                                         
                                     <tr>
-                                        <td>{{$material['nombre']}}  // {{$material['cantidad']}} Disponible  <input type="text" hidden value={{$material['id']}} name="material[{{$key}}][id]"> <input type="text" hidden value={{$material['nombre']}} name="material[{{$key}}][nombre]"> </td>
-                                        <td><input type="text"   name="material[{{$key}}][cantidad]" > </td>
-                                        <td>{{$material['medida']}} <input type="text" hidden value={{$material['medida']}} name="material[{{$key}}][medida]" > </td>
+                                        <td>{{$material['nombre']}}  // <strong>{{$material['cantidad']}} Disponible</strong>  <input type="text" hidden value={{$material['id']}} name="material[{{$key}}][id]"> <input type="text" hidden value={{$material['nombre']}} name="material[{{$key}}][nombre]"> </td>
+                                        <td><input type="number" min="0" required   name="material[{{$key}}][cantidad]" > </td>
+                                        <td>{{$material['medida']}} </td>
                                                                                 
                                     </tr>
     

@@ -32,7 +32,7 @@ class Material extends Model
     {
         return $this->belongsToMany(Proveedor::class, 'compras', 'material_id', 'proveedor_id')
                     ->as('compras')
-                    ->withPivot('cantidad','valor_unitario', 'fecha_compra', 'factura')
+                    ->withPivot('cantidad','valor_unitario', 'fecha_compra', 'factura', 'medida_id')
                     ->withTimestamps();
     }
 

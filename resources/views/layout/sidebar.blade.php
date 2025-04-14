@@ -94,7 +94,7 @@
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('materiales.index') }}">Listar Materiales</a></li>
                             <li><a href="{{ route('materiales.create') }}">Crear Nuevo Material</a></li>
-                            <li><a href="#">Crear Consolidado</a></li>
+                            <li><a href="{{ route('materiales.reservados') }}">Materiales Reservados</a></li>
                             <li><a href="#">Recibir Devolucion</a></li>
                             <li><a href="#">Consolidado sin Stock</a></li>
                     
@@ -128,7 +128,7 @@
                         </svg><span>Compras</span></a>
                     <ul class="sidebar-submenu">
                         <li><a href="#">Ingresar Compra</a></li>
-                        <li><a href="#">Consultar Compras</a></li>
+                        <li><a href="{{ route('materiales.consultacompras') }}">Consultar Compras</a></li>
                         
                         
                         
