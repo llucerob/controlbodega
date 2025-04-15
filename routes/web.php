@@ -57,8 +57,8 @@ route::post('consultar-comprafecha', [MaterialesController::class, 'consultarcom
 route::get('reservados-materiales', [MaterialesController::class, 'reservados'])->name('materiales.reservados');
 route::get('reservados-entrega/{id}', [MaterialesController::class, 'reservadosentrega'])->name('materiales.reservadosentrega');
 route::get('reservar-material/{id}', [MaterialesController::class, 'reservar'])->name('materiales.reservar');
-route::post('reservar2-material', [MaterialesController::class, 'reservar2'])->name('materiales.reservar2');
-route::post('setreservar-material', [MaterialesController::class, 'setreservar'])->name('materiales.setreservar');
+route::post('reservar2-material/{id}', [MaterialesController::class, 'reservar2'])->name('materiales.reservar2');
+route::post('setreservar-material/{id}', [MaterialesController::class, 'setreservar'])->name('materiales.setreservar');
 //actividades
 
 route::get('listar-actividades', [ActividadesController::class, 'index'])->name('actividades.index');
@@ -67,6 +67,7 @@ route::get('crear-actividad', [ActividadesController::class, 'create'])->name('a
 route::post('store-actividad', [ActividadesController::class, 'store'])->name('actividades.store');
 route::get('editar-actividad/{id}', [ActividadesController::class, 'edit'])->name('actividades.edit');
 route::post('update-actividad/{id}', [ActividadesController::class, 'update'])->name('actividades.update');
+route::get('ver-actividad/{id}', [ActividadesController::class, 'show'])->name('actividades.ver');
 
 route::post('create2-actividad',[ActividadesController::class, 'create2'])->name('actividades.create2');
 

@@ -46,7 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">Id</th>
-                                        <th class="text-center">Emergencia</th>
+                                        <th class="text-center">Tipo</th>
                                         <th class="text-center">Ticket</th>
                                         <th class="text-center">Nombre</th>
                                         <th class="text-center">Ubicación</th>
@@ -56,6 +56,10 @@
                                         
                                     </tr>
                                 </thead>
+                                <!-- Modal -->
+                                
+
+
                                 <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -86,6 +90,7 @@
             
         </div>
     </div>
+</div>
     <!-- Container-fluid Ends-->
 @endsection
 
@@ -107,7 +112,7 @@
                     ajax: '{{route('actividades.ajax')}}',
                     columns: [
                         {data: 'id'},
-                        {data: 'emergencia'},
+                        {data: 'tipo'},
                         {data: 'ticket'},
                         {data: 'nombre'},
                         {data: 'ubicacion'},
@@ -125,21 +130,19 @@
                         
                 });
 
-            obtener_data_eliminar('#actividades', tabla);
-            obtener_data_editar('#materiales', tabla);
+           
+            obtener_data_editar('#actividades', tabla);
             obtener_data_reservar('#actividades',tabla);
+            obtener_data_editar('#actividades',tabla);
+            obtener_data_ver('#actividades',tabla);
+            obtener_data_devolver('#actividades',tabla);
+            obtener_data_cerrar('#actividades',tabla);
+            
            
             
         });
 
-        var obtener_data_eliminar = function(tbody, tabla){
-            $(tbody).on ('click', 'button.eliminar',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "destroy-proveedor/"+data.id;
-               
-                
-            })
-        }
+        
         var obtener_data_reservar = function(tbody, tabla){
             $(tbody).on ('click', 'button.reservar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
@@ -151,12 +154,35 @@
         var obtener_data_editar = function(tbody, tabla){
             $(tbody).on ('click', 'button.editar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
-                location.href = "editar-material/"+data.id;
+                location.href = "editar-actividad/"+data.id;
                
                 
             })
         }
-       
+        var obtener_data_ver = function(tbody, tabla){
+            $(tbody).on ('click', 'button.ver',function(){
+                var data = tabla.row($(this).parents('tr')).data();
+                location.href = "ver-actividad/"+data.id;
+               
+                
+            })
+        }
+        var obtener_data_devolver = function(tbody, tabla){
+            $(tbody).on ('click', 'button.devolver',function(){
+                var data = tabla.row($(this).parents('tr')).data();
+                location.href = "ver-ocupados/"+data.id;
+               
+                
+            })
+        }
+        var obtener_data_cerrar = function(tbody, tabla){
+            $(tbody).on ('click', 'button.cerrar',function(){
+                var data = tabla.row($(this).parents('tr')).data();
+                location.href = "ver-ocupados/"+data.id;
+               
+                
+            })
+        }
 
 
         

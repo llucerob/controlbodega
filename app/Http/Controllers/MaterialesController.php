@@ -267,41 +267,46 @@ class MaterialesController extends Controller
 
     public function reservados()
     {
-        $actividades = Actividad::all();
-        //dd(isset($actividades->reservados));
+        $actividades = Actividad::with('reservados')->where('estado', 'en proceso')->get();
+        //dd($actividades);
         $arr = [];
 
         foreach($actividades as $key =>$a)
         {
-            //dd($a->reservados());
-            if($a->reservados()->count() > 0 )
+            //dd($a->reservados->count());
+            if($a->reservados->count()>0)
             {
                 $arr[$key]['actividad_nombre'] = $a->nombre;
                 $arr[$key]['actividad_id'] = $a->id;
-                //dd($a->reservados);
+
+                //$mat= [];
+                
                 foreach($a->reservados as $key2 => $r)
                 {   
-                    //dd($r->reservados->id);
-                    $material = Material::findOrFail($r->reservados->id);
+                    //dd($r->nombre);
+                    //$material = Material::findOrFail($r->reservados->material_id);
 
-                   
-                    //$arr[$key]['material'][$key2]['material_id'] = $r->reservados->id;
-                    $arr[$key]['material'][$key2]['material_nombre'] = $material->nombre;
+                    //dd($material);
+                    $arr[$key]['material'][$key2]['material_id'] = $r->id;
+                    $arr[$key]['material'][$key2]['material_nombre'] = $r->nombre;
                     $arr[$key]['material'][$key2]['material_cantidad'] = $r->reservados->cantidad;
                     $arr[$key]['material'][$key2]['material_valor'] = $r->reservados->valor;
-                    $arr[$key]['material'][$key2]['material_medida'] = $material->esmedida->abreviatura;
+
+                   
+                    $arr[$key]['material'][$key2]['material_medida'] = $r->esmedida->abreviatura;
                     //$arr[$key]['material'][$key2]['medida_id'] = $material->esmedida->id;
                 }
+                
                 $arr[$key]['ubicacion'] = $a->ubicacion;
                 $arr[$key]['fecha'] = Carbon::parse($a->inicio)->format('Y-m-d');
                 
             }
         }
 
-        ;
+        
         //dd($arr);
         return view('materiales.reservados', compact('arr'));
-      }
+    }
 
     public function reservadosentrega($id){
 
@@ -360,7 +365,40 @@ class MaterialesController extends Controller
             $materiales[$key] = Material::findOrFail($m);
         }
 
-        return view('actividades.agregarMaterialesActividad2', compact('materiales', 'actividad'));
+        return view('materiales.reservar2', compact('materiales', 'actividad'));
       
+    }
+
+    public function setreservar($id, Request $request)
+    {
+
+        $actividad = Actividad::findOrFail($id);
+
+        //dd($actividad);
+
+        $ocupados = $request->material;
+
+
+       foreach($ocupados as $p){
+                $material = Material::find($p['id']);
+
+                
+    
+                $actividad->reservados()->attach($p['id'], [
+                    'cantidad' => $p['cantidad'],
+                    'valor' => $material->valor_unitario,
+                    'medida_id' => $material->medida,
+                ]);
+    
+                $material->cantidad = $material->cantidad - $p['cantidad'];
+    
+                $material->update();
+            }
+        
+       
+
+        
+
+        return redirect()->route('actividades.index')->with('success', 'Material reservado correctamente');
     }
 }

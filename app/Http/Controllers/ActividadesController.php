@@ -32,11 +32,18 @@ class ActividadesController extends Controller
         $arr = [];
         foreach($act as $key => $a){
             $arr[$key]['id'] = $a->id;
+
             if($a->emergencia == 'si'){
-                $arr[$key]['emergencia'] = 'Es Emergencia';
+                $arr[$key]['tipo'] = 'Emergencia';
+            }elseif($a->interna == 'si'){
+                $arr[$key]['tipo'] = 'Interna';
+                
             }else{
-                $arr[$key]['emergencia'] = 'No es emergencia';
+                $arr[$key]['tipo'] = 'Ticket';
             }
+
+
+
             if($a->ticket == 'null'){
                 $arr[$key]['ticket'] = 'No presenta Ticket';
             }else{
@@ -239,7 +246,13 @@ foreach($ocupados as $p){
      */
     public function show(string $id)
     {
-        //
+        $actividad = Actividad::findOrFail($id);
+
+        //$materiales = $actividad->reservados;
+
+        //dd($materiales);
+
+        return view('actividades.ver', compact('actividad'));
     }
 
     /**

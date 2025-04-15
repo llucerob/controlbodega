@@ -34,12 +34,11 @@
         <div class="row starter-main">
 
             <div class="col-lg-12">
-                <form class="card" action="{{ route('materiales.reservar2') }}" method="POST" enctype="multipart/form-data">
+                <form class="card" action="{{ route('materiales.reservar2', $actividad->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf	
                         
                         <div class="card-header">
                             <h4 class="card-title mb-0">Nueva Reserva para {{ $actividad->nombre }}</h4>
-                            <div class="card-options"><a class="card-options-collapse" href="#" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                         </div>
                         <div class="card-body">
                             <div class="row">
