@@ -61,7 +61,7 @@
                                                 
                                             <tr>
                                                 <td>{{$material['nombre']}}  // {{$material['cantidad']}} [{{ $material->esmedida->abreviatura }}]  Disponibles <input type="text" hidden value={{$material['id']}} name="material[{{$key}}][id]"> </td>
-                                                <td><input required min="0" max="{{ $material['cantidad'] }}" type="number"   name="material[{{$key}}][cantidad]" > </td>
+                                                <td><input required min="1" max="{{ $material['cantidad'] }}" type="number"   name="material[{{$key}}][cantidad]" > </td>
                                                 
                                                                                         
                                             </tr>

@@ -111,7 +111,7 @@
                         {data: 'valor_unitario'},
                         {
                             data: null,
-                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="comprar btn btn-success btn-sm m-1" title="comprar"><i class="fa-solid fa-dollar"></i></button><button class="eliminar btn btn-danger btn-sm m-1" title="eliminar"><i class="fas fa-trash-alt"></i></button><button class="listarcompras btn btn-warning btn-sm m-1" title="listarcompras"><i class="fa-solid fa-shopping-basket"></i></button><button class="rutamaterial btn btn-secondary btn-sm m-1" title="rutamaterial"><i class="fa-solid fa-book"></i></button>',
+                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="comprar btn btn-success btn-sm m-1" title="comprar"><i class="fa-solid fa-dollar"></i></button><button class="listarcompras btn btn-warning btn-sm m-1" title="listarcompras"><i class="fa-solid fa-shopping-basket"></i></button><button class="rutamaterial btn btn-secondary btn-sm m-1" title="rutamaterial"><i class="fa-solid fa-book"></i></button>',
                            
                                 
                             },
@@ -121,7 +121,7 @@
                         
                 });
 
-            obtener_data_eliminar('#materiales', tabla);
+            //obtener_data_eliminar('#materiales', tabla);
             obtener_data_editar('#materiales', tabla);
             obtener_data_comprar('#materiales',tabla);
             obtener_data_listarcompras('#materiales',tabla);
@@ -130,6 +130,8 @@
             
         });
 
+       /* 
+        <button class="eliminar btn btn-danger btn-sm m-1" title="eliminar"><i class="fas fa-trash-alt"></i></button>
         var obtener_data_eliminar = function(tbody, tabla){
             $(tbody).on ('click', 'button.eliminar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
@@ -137,7 +139,7 @@
                
                 
             })
-        }
+        }*/
         var obtener_data_comprar = function(tbody, tabla){
             $(tbody).on ('click', 'button.comprar',function(){
                 var data = tabla.row($(this).parents('tr')).data();
@@ -166,7 +168,7 @@
         var obtener_data_rutamaterial = function(tbody, tabla){
             $(tbody).on ('click', 'button.rutamaterial',function(){
                 var data = tabla.row($(this).parents('tr')).data();
-                location.href = "compras-material/"+data.id;
+                location.href = "consulta-material/"+data.id;
                
                 
             })

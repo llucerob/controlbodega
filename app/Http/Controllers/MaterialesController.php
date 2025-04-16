@@ -9,6 +9,7 @@ use App\Models\Proveedor;
 use Carbon\Carbon;
 use App\Models\Compra;
 use App\Models\Actividad;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class MaterialesController extends Controller
@@ -175,7 +176,7 @@ class MaterialesController extends Controller
         }
         
         
-        $fecha_compra   = Carbon::createFromFormat('Y-m-d', $request->input('fecha_compra'))->format('Y-m-d'); 
+        $fecha_compra   = Carbon::parse($request->input('fecha_compra'))->format('Y-m-d'); 
         
         //dd($idProveedor);
 
@@ -401,4 +402,92 @@ class MaterialesController extends Controller
 
         return redirect()->route('actividades.index')->with('success', 'Material reservado correctamente');
     }
+
+    public function consultamaterial($id){
+
+        $material = Material::findOrFail($id);
+        //dd($material->ocupados);
+
+
+        $array = [];
+        $total = 0;
+        $totalpordevolver =0;
+
+        foreach($material->ocupados as $key => $o){
+            //dd($o->ubicacion);
+            
+            $array[$key]['nombre']      = $o->nombre;
+            $array[$key]['ubicacion']   = $o->ubicacion;
+            $array[$key]['fecha']       = Carbon::parse($o->ocupados->created_at)->format('Y-m-d');
+            $array[$key]['cantidad']    = $o->ocupados->cantidad;
+            $array[$key]['por_devolver']       = $o->ocupados->por_devolver;
+            $total = $total + $o->ocupados->cantidad;
+            $totalpordevolver = $totalpordevolver + $o->ocupados->por_devolver;
+
+            
+
+
+        }
+
+        //dd($array);
+        $arr= [];
+        $totalreserva = 0;	
+
+        foreach($material->reservados as $key => $r){
+            //dd($o->ubicacion);
+            
+            $arr[$key]['nombre']      = $r->nombre.' (por entregar)';
+            $arr[$key]['ubicacion']   = $r->ubicacion;
+            $arr[$key]['fecha']       = Carbon::parse($r->reservados->created_at)->format('Y-m-d');
+            $arr[$key]['cantidad']    = $r->reservados->cantidad;
+            $totalreserva = $totalreserva + $r->reservados->cantidad;
+
+            
+
+
+        }
+
+
+
+        //dd($array);
+
+        $compras = Compra::where('material_id', '=' , $id)->get();
+
+        $arreglo['entradas'] = 0;
+
+        foreach($compras as $c){
+            $arreglo['entradas'] = $arreglo['entradas'] + $c->cantidad;
+        }
+
+        $arreglo['array']       = $array;
+        $arreglo['arr']         = $arr;
+        $arreglo['salidas']     = $total;
+        $arreglo['reservas']    = $totalreserva;
+        $arreglo['pordevolver'] = $totalpordevolver;
+        $arreglo['stock']       = $material->cantidad;
+        $arreglo['nombre']      = $material->nombre;
+
+
+        //dd($arreglo);
+        
+        view()->share('array', $arreglo);
+        $pdf = PDF::loadView('pdfs.rutamaterial', $arreglo);
+
+        return $pdf->download('rutamaterial.pdf');
+
+
+    }
+
+    public function devolucionmaterial($id){
+
+    
+        $actividad = Actividad::findOrFail($id);
+        $ocupados = $actividad->ocupados()->get();  
+        //dd($ocupados);
+
+        return view('materiales.devolucion', compact('ocupados', 'actividad'));
+    }
+
+
+    
 }

@@ -76,8 +76,9 @@
                         <button class="btn btn-primary" type="submit">Crear Proveedor</button>
                     </div>
                 </form>
-                </div>      
+            </div>      
             
+        </div>
         </div>
     </div>
     <!-- Container-fluid Ends-->

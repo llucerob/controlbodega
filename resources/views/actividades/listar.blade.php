@@ -170,7 +170,7 @@
         var obtener_data_devolver = function(tbody, tabla){
             $(tbody).on ('click', 'button.devolver',function(){
                 var data = tabla.row($(this).parents('tr')).data();
-                location.href = "ver-ocupados/"+data.id;
+                location.href = "devolucion-material/"+data.id;
                
                 
             })

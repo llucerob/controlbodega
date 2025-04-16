@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary" type="submit">Crear Material</button>
+                            <button class="btn btn-primary" type="submit">editar Material</button>
                         </div>
                     </form>
                 </div>

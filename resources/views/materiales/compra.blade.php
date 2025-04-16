@@ -4,6 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('main_content')
@@ -89,7 +90,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group mb-3">
                                 <label class="form-label">Fecha Compra</label>
-                                <input required type="date" name="fecha_compra" class="form-control">
+                                <input required type="text" name="fecha_compra" class="form-control calendario">
                             </div>
                         </div>
 
@@ -119,4 +120,20 @@
 @section('scripts')
 <script src="{{asset('assets/js/touchspin/touchspin.js')}}"></script>
 <script src="{{asset('assets/js/touchspin/input-groups.min.js')}}"></script>
+
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.es.js')}}"></script>
+
+
+
+  <script>
+		(function($) {
+
+			$('.calendario').datepicker({
+				language: 'es',
+				autoClose: true,
+				position: "top left"
+			});
+		})(jQuery);
+  </script>
 @endsection

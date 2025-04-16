@@ -16,7 +16,7 @@ class Material extends Model
     {
         return $this->belongsToMany(Actividad::class, 'materialesocupados', 'material_id', 'actividad_id')
                     ->as('ocupados')
-                    ->withPivot('cantidad','valor', 'medida', 'activo')
+                    ->withPivot('cantidad','valor', 'medida_id', 'por_devolver', 'devolucion')
                     ->withTimestamps();;
     }
     public function reservados(): BelongsToMany

@@ -59,6 +59,8 @@ route::get('reservados-entrega/{id}', [MaterialesController::class, 'reservadose
 route::get('reservar-material/{id}', [MaterialesController::class, 'reservar'])->name('materiales.reservar');
 route::post('reservar2-material/{id}', [MaterialesController::class, 'reservar2'])->name('materiales.reservar2');
 route::post('setreservar-material/{id}', [MaterialesController::class, 'setreservar'])->name('materiales.setreservar');
+route::get('consulta-material/{id}', [MaterialesController::class, 'consultamaterial'])->name('materiales.consulta');
+route::get('devolucion-material/{id}', [MaterialesController::class, 'devolucionmaterial'])->name('materiales.devolucion');
 //actividades
 
 route::get('listar-actividades', [ActividadesController::class, 'index'])->name('actividades.index');
