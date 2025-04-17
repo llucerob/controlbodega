@@ -47,7 +47,7 @@
 								<thead>
 									<tr>
 										<th class="text-center">Nombre</th>
-										<th class="text-center">Cantidad Ocupada</th>
+										<th class="text-center">Cantidad Solicitada</th>
 										
 										<th class="text-center">Cantidad a Devolver</th>
 										<th class="text-center">Cantidad esperando a ser reingresada en bodega</th>
@@ -61,19 +61,16 @@
 									<tr>
 
 										<td class="text-center">
-											{{ $o->nombre }} <p>solicitado el {{date_format($o->ocupados->created_at, 'Y-m-d')}}</p>
+											{{ $o->nombre }}
 										</td>
 										<td class="text-center">
-											{{ $o->ocupados->cantidad }} <strong>[{{ $o->esmedida->abreviatura }}]</strong>
+											{{ $o->ocupados->cantidad }}
 										</td>
 										
 										<td class="text-center">
 											<input type="text" name="ocupado[{{$key}}][material_id]" value={{$o->id}}  hidden>
 											<input type="number" name="ocupado[{{$key}}][devolucion]" min="0" max="{{$o->ocupados->cantidad}}">
-											<strong>[{{ $o->esmedida->abreviatura }}]
-										</td>
-										<td class="text-center">
-											{{$o->ocupados->por_devolver}} <strong>[{{ $o->esmedida->abreviatura }}]</strong>
+											<strong>[{{ $o->esmedida->abreviatura }}]</strong>
 										</td>
 
 								    </tr>
