@@ -488,6 +488,24 @@ class MaterialesController extends Controller
         return view('materiales.devolucion', compact('ocupados', 'actividad'));
     }
 
+    public function setdevolucion(Request $request, $id){
+
+        $actividad = Actividad::findOrFail($id);
+        $ocupados = $actividad->ocupados()->get();  
+        //dd($ocupados);
+
+        foreach($ocupados as $key => $o){
+            //dd($o->ubicacion);
+            
+            $o->ocupados->por_devolver = $request->cantidad[$key];
+            $o->ocupados->devolucion = 'si';
+            $o->ocupados->update();
+        }
+
+        return redirect()->route('actividades.index')->with('success', 'Se ha generado devolucion de los materiales correctamente');
+    }
+
+
 
     
 }
