@@ -482,10 +482,10 @@ class MaterialesController extends Controller
 
     
         $actividad = Actividad::findOrFail($id);
-        $ocupados = $actividad->ocupados()->get();  
-        //dd($ocupados);
+        //$ocupados = $actividad->ocupados()->get();  
+        //dd($actividad->ocupados);
 
-        return view('materiales.devolucion', compact('ocupados', 'actividad'));
+        return view('materiales.devolucion', compact('actividad'));
     }
 
 
