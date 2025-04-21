@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\Compra;
 use App\Models\Actividad;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Ocupado;
 
 
 class MaterialesController extends Controller
@@ -482,27 +483,89 @@ class MaterialesController extends Controller
 
     
         $actividad = Actividad::findOrFail($id);
-        //$ocupados = $actividad->ocupados()->get();  
-        //dd($actividad->ocupados);
+        $nombre = $actividad->nombre;
 
-        return view('materiales.devolucion', compact('actividad'));
+        $ocupados = Ocupado::where('actividad_id', '=', $id)->get();
+       
+       //dd($ocupados);
+
+        return view('materiales.devolucion', compact('nombre', 'ocupados'));
     }
 
-    public function setdevolucion(Request $request, $id){
+    public function setdevolucion(Request $request){
 
-        $actividad = Actividad::findOrFail($id);
-        $ocupados = $actividad->ocupados()->get();  
-        //dd($ocupados);
+        
+        
+        //dd($request->ocupado);
 
-        foreach($ocupados as $key => $o){
-            //dd($o->ubicacion);
+        foreach($request->input('ocupado') as $key => $o){
             
-            $o->ocupados->por_devolver = $request->cantidad[$key];
-            $o->ocupados->devolucion = 'si';
-            $o->ocupados->update();
+            $material = Ocupado::findorFail($o['id']);
+            $material->por_devolver = $material->por_devolver + $o['cantidad'];
+            $material->cantidad = $material->cantidad - $o['cantidad'];
+            $material->update();
         }
 
         return redirect()->route('actividades.index')->with('success', 'Se ha generado devolucion de los materiales correctamente');
+    }
+
+    public function recibirdevolucion(){
+
+        $actividades = Actividad::with('ocupados')->where('estado', 'en proceso')->get();
+        //dd($actividades);
+        $arr = [];
+
+        foreach($actividades as $key =>$a)
+        {
+            //dd($a->reservados->count());
+            if($a->ocupados->count()>0)
+            {
+                                             
+                foreach($a->ocupados as $key2 => $r)
+                {   
+                    if($r->ocupados->por_devolver > 0 ){
+                        $arr[$key]['actividad_nombre'] = $a->nombre;
+                        $arr[$key]['actividad_id'] = $a->id;
+                        $arr[$key]['ubicacion'] = $a->ubicacion;
+                        $arr[$key]['material'][$key2]['material_id'] = $r->id;
+                        $arr[$key]['material'][$key2]['material_nombre'] = $r->nombre;
+                        $arr[$key]['material'][$key2]['material_cantidad'] = $r->ocupados->por_devolver;
+                        $arr[$key]['material'][$key2]['material_valor'] = $r->ocupados->valor;
+                 
+                        $arr[$key]['material'][$key2]['material_medida'] = $r->esmedida->abreviatura;
+                    }
+                    
+                    
+                }
+                
+                
+                
+                
+            }
+        }
+
+
+        return view('materiales.recibirdevolucion', compact('arr'));
+
+    }
+
+    public function recibedevolucion($id){
+
+        $ocupados = Ocupado::where('actividad_id', $id)->get();
+
+        foreach($ocupados as $o){
+            $o->devolucion = $o->por_devolver;
+            $o->por_devolver = 0;
+            $o->update();
+            $bodega = Material::findorFail($o->material_id);
+            $bodega->cantidad = $bodega->cantidad + $o->devolucion;
+            $bodega->update();
+
+        }
+
+
+        return redirect()->route('materiales.index')->with('success', 'Se ha realizado una devolucion correctamente a la bodega');
+
     }
 
 

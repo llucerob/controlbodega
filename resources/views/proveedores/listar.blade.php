@@ -100,7 +100,7 @@
 
             var tabla = $('#proveedores').DataTable({
                 language: {
-                        url: '//cdn.datatables.net/plug-ins/2.2.2/i18n/es-ES.json',
+                        url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },
                 
                     ajax: '{{route('proveedores.ajax')}}',

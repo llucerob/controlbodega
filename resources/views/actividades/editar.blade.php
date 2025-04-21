@@ -61,7 +61,7 @@
                                             <label class="form-label">¿Tiene Ticket?</label>
                                             <div class="">
                                                 <label class="switch">
-                                                <input type="checkbox" onchange="cambio();" id="chec"><span class="switch-state"></span>
+                                                <input type="checkbox" onchange="cambio();" @if($actividad->emergencia == 'no') checked @endif name="tik" id="chec"><span class="switch-state"></span>
                                                 </label>
                                             </div>
                                         
@@ -75,7 +75,7 @@
                                             <label class="form-label">¿Es Actividad interna?</label>
                                             <div class="">
                                                 <label class="switch">
-                                                <input type="checkbox" name="actividad[interna]"><span class="switch-state"></span>
+                                                <input type="checkbox" @if($actividad->actividad_interna == 'si') checked @endif name="interna"><span class="switch-state"></span>
                                                 </label>
                                             </div>
                                         
@@ -88,7 +88,7 @@
                                         <label class="form-label">Ticket</label>
                                         <fieldset>
                                             <div class="input-group mt-1">
-                                                <input class="form-control" type="number" min="0" id="ticket" name="actividad[ticket]" readonly>
+                                                <input class="form-control" type="number" min="0" id="ticket" value="{{ $actividad->ticket }}" name="ticket" readonly>
                                             </div>
                                         </fieldset>
                                     </div>				
@@ -100,30 +100,14 @@
                                         <label class="form-label">Fecha de Inicio</label>
                                         <fieldset>
                                             <div class="input-group mt-1">
-                                                <input class="calendario form-control" required  type="text" id="date" name="actividad[inicio]">
+                                                <input class="calendario form-control" required  type="text" id="date" name="inicio" value="{{ $actividad->inicio }}">
                                             </div>
                                         </fieldset>
                                     </div>				
                                     
                                 </div>
     
-                                <div class="col-sm-12 col-md-12">
-                                    <div class="form-group  mb-3">
-                                        <label class="form-label">Seleccione los materiales a necesitar en esta actividad, la cantidad de cada material se le solicitará en la siguiente ventana
-                                        </label>
-                                        <fieldset>
-                                            <div class="input-group mt-1">
-                                                <select name="materiales[]" id="materiales" multiple="multiple" style="width: 75%">
-                                                    @foreach($lista as  $l)
-                                                        <option value="{{$l['id']}}">{{$l['text']}}</option>
-                
-                                                    @endforeach
-                                                </select>							
-                                            </div>
-                                        </fieldset>
-                                    </div>				
-                                    
-                                </div>
+                              
     
                                 
                                                 
@@ -139,7 +123,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary" type="submit">Crear Actividad</button>
+                            <button class="btn btn-primary" type="submit">Editar</button>
                         </div>
                     </form>
                 </div>
@@ -193,7 +177,7 @@
   <script>
     $(document).ready(function() {
 
-		//var data =  {!! json_encode($lista) !!} ;
+		
 	
     	$('#materiales').select2({
 			

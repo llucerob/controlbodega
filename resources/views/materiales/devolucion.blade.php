@@ -35,11 +35,10 @@
         <div class="row starter-main">
 
             <div class="col-sm-10">
-			    <form class="card" action="{{route('materiales.setdevolucion', $actividad->id)}}" method="POST" enctype="multipart/form-data">
+			    <form class="card" action="{{route('materiales.setdevolucion')}}" method="POST" enctype="multipart/form-data">
 					@csrf	
 					<div class="card-header">
-						<h4 class="card-title mb-0">Devolucion Material</h4>
-						<div class="card-options"><a class="card-options-collapse" href="#" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+						<h4 class="card-title mb-0">Devolucion Material para la actividad {{$nombre}}</h4>
 					</div>
 					<div class="card-body">
 						<div class="col-md-12">
@@ -56,21 +55,26 @@
 									</tr>
 								</thead>
 
-									@foreach ($actividad->ocupados  as $key => $o)
+									@foreach ($ocupados  as $key => $o)
 
 									<tr>
 
 										<td class="text-center">
-											{{ $o->nombre }}
+											{{ $o->material->nombre }}
 										</td>
 										<td class="text-center">
-											{{ $o->ocupados->cantidad }}
+											{{ $o->cantidad }}
 										</td>
 										
 										<td class="text-center">
-											<input type="text" name="ocupado[{{$key}}][material_id]" value={{$o->id}}  hidden>
-											<input type="number" name="ocupado[{{$key}}][devolucion]" min="0" max="{{$o->ocupados->cantidad}}">
-											<strong>[{{ $o->esmedida->abreviatura }}]</strong>
+											<input type="text" name="ocupado[{{$key}}][id]" value="{{$o->id}}"  hidden>
+											<input type="number" required name="ocupado[{{$key}}][cantidad]" min="0" max="{{$o->cantidad}}">
+											<strong>[{{ $o->material->esmedida->abreviatura }}]</strong>
+										</td>
+
+										<td class="text-center">
+											{{ $o->por_devolver }}
+											<strong>[{{ $o->material->esmedida->abreviatura }}]</strong>
 										</td>
 
 								    </tr>

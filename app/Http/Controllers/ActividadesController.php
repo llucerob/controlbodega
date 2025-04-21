@@ -151,21 +151,22 @@ class ActividadesController extends Controller
         $new_actividad->nombre = $actividad['nombre'];
        
 
-        if(isset($actividad['ticket'])){
+        if($actividad['interna'] == 'si'){
+
+            $new_actividad->interna = 'si'; 
+            $new_actividad->emergencia = 'no';
+            $new_actividad->ticket = null;
+
+        }elseif(isset($actividad['ticket'])){
+
             $new_actividad->ticket = $actividad['ticket'];
             $new_actividad->emergencia = 'no';
+
         }else{
 
             $new_actividad->emergencia = 'si';
             $new_actividad->ticket=null;
             
-        }
-
-
-        if($actividad['interna'] == 'si'){
-            $new_actividad->interna = 'si'; 
-            $new_actividad->emergencia = 'no';
-            $new_actividad->ticket = null;
         }
         $new_actividad->ubicacion = $actividad['ubicacion'];
         $new_actividad->inicio = Carbon::parse($actividad['inicio'])->format('Y-m-d');
@@ -195,51 +196,9 @@ foreach($ocupados as $p){
     }
 
 
-    public function cerraractividad(Request $request){
-
-        $actividad = Actividad::findOrFail($request->id);
+    
 
 
-         //dd($actividad->ocupados);
-
-        //$nombre = "archivo-del".$actividad->nombre;
-
-        if($request->file('doc')){
-
-            $ruta = Storage::disk('public')->put('archivos', $request->file('doc'));
-
-
-            $actividad->archivo = $ruta;
-        }
-
-        
-
-
-
-        $actividad->activo ='0';
-        $actividad->termino = date('d/m/Y');
-        $actividad->update();
-
-        //luego de cerrar la actividad, si hay elementos por devolver se envia a la devolucion
-
-        if(isset($request->devolucion)){
-
-            
-
-
-           
-            return redirect('devolucion-material/'.$actividad->id);
-        }else{
-
-            return redirect('listar-actividades')->with('success', 'se ha cerrado la actividad correctamente');
-
-        };
-
-
-        
-
-
-    }
 
     /**
      * Display the specified resource.
@@ -247,12 +206,30 @@ foreach($ocupados as $p){
     public function show(string $id)
     {
         $actividad = Actividad::findOrFail($id);
+        $inicio = Carbon::parse($actividad->inicio)->format('Y-m-d');
+
+        if($actividad->estado == 'terminado'){
+            $fin = Carbon::parse($actividad->fin)->format('Y-m-d');
+
+            //$dias = $inicio->diff($fin, true)->days;
+            
+            $dias = Carbon::parse($inicio)->diffInDays(Carbon::parse($fin));
+
+
+        }else{
+                 
+            $dias = Carbon::parse($inicio)->diffInDays(Carbon::now());
+        }
+        
+
+        $dias = (int)$dias;
+        //dd((int)$dias);
 
         //$materiales = $actividad->reservados;
 
         //dd($materiales);
 
-        return view('actividades.ver', compact('actividad'));
+        return view('actividades.ver', compact('actividad', 'dias'));
     }
 
     /**
@@ -275,40 +252,35 @@ foreach($ocupados as $p){
     {
         $actividad = Actividad::findOrFail($id);
 
-        $update = $request->actividad;
+        
  
-        $actividad->nombre       = $update['nombre'];
-        $actividad->ubicacion    = $update['ubicacion'];
-        $actividad->inicio       = $update['inicio'];
+        $actividad->nombre       = $request->input('nombre');
+        $actividad->ubicacion    = $request->input('ubicacion');
+        $actividad->inicio       = $request->input('inicio');
  
       
         
-        if(isset($update['interna'])){
-         $actividad->interna = '1';
-         $actividad->emergencia = '0';
-         $actividad->ticket = "null";
+        if($request->input('interna') == 'on'){
+         $actividad->actividad_interna = 'si';
+         $actividad->emergencia = 'no';
+         $actividad->ticket = null;
  
-         }elseif(isset($update['tick'])){
+         }elseif($request->input('tik') == 'on'){
  
-             $actividad->emergencia  = '0';
-             $actividad->ticket      = $update['ticket'];
-             $actividad->interna     = "0";           
+             $actividad->emergencia  = 'no';
+             $actividad->ticket      = $request->input('ticket');
+             $actividad->actividad_interna     = 'no';           
  
          }else{
  
-             $actividad->ticket = "null";
-             $actividad->emergencia = "1";
-             $actividad->interna = "0";
+             $actividad->ticket = null;
+             $actividad->emergencia ='si';
+             $actividad->actividad_interna = 'no';
  
             
          
          }
      
- 
- 
-       
- 
- 
  
          $actividad->update();
  
@@ -316,5 +288,85 @@ foreach($ocupados as $p){
          return redirect('listar-actividades')->with('success', 'Se ha actualizado el registro');
     }
 
+    public function cerrar(Request $request){
+        
+        $actividad = Actividad::findOrFail($request->input('actividad_id'));
+
+        $cantidad = 0;
+        
+        foreach($actividad->ocupados as $m){
+
+            $cantidad = $cantidad + $m->ocupados->por_devolver;
+
+        }
+        
+        if($request->input('devolucion') == 'on')
+        {
+            return redirect('devolucion-material/'.$request->input('actividad_id'));
+
+        }elseif($cantidad > 0)
+        {
+            return redirect()->route('actividades.index', $actividad->id)->with('info', 'No se puede cerrar la actividad, la devolucion debe ser aceptada por bodega');
+        }else
+        {
+
    
+           if($request->file('doc')){
+   
+               $ruta = Storage::disk('public')->put('archivos', $request->file('doc'));
+   
+               $actividad->archivo = $ruta;
+           }
+           
+            $actividad->estado = 'terminado';  
+   
+           $actividad->fin = Carbon::now()->format('Y-m-d');
+           $actividad->update();
+   
+           //luego de cerrar la actividad, si hay elementos por devolver se envia a la devolucion
+   
+           
+   
+               return redirect('listar-actividades')->with('success', 'se ha cerrado la actividad correctamente');
+   
+           
+        }
+        
+        
+       
+    }
+
+    public function trabajosrealizados(){
+
+        $actividades = Actividad::where('estado', 'terminado')->get();
+
+        //dd($actividades);
+
+        return view('actividades.cerradas', compact('actividades'));
+    }
+
+    public function valorizar($id){
+        $actividad = Actividad::findOrFail($id);
+
+        //$materiales = $actividad->reservados;
+
+        //dd($materiales);
+
+        return view('actividades.valorizar', compact('actividad'));
+
+
+    }
+
+    public function setcotizar(Request $request, $id){
+        $actividad = Actividad::findOrFail($id);
+
+        $actividad->cotizacion = $request->input('cotizacion');
+
+        $actividad->estado = 'valorizado';
+        $actividad->update();
+
+        return redirect()->route('actividades.index')->with('success', 'Se ha agregado cotizacion a la actividad');
+
+   
+    }
 }

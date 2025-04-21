@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 //crud medidas
 
@@ -61,7 +61,15 @@ route::post('reservar2-material/{id}', [MaterialesController::class, 'reservar2'
 route::post('setreservar-material/{id}', [MaterialesController::class, 'setreservar'])->name('materiales.setreservar');
 route::get('consulta-material/{id}', [MaterialesController::class, 'consultamaterial'])->name('materiales.consulta');
 route::get('devolucion-material/{id}', [MaterialesController::class, 'devolucionmaterial'])->name('materiales.devolucion');
-route::post('setdevolucion-material/{id}', [MaterialesController::class, 'setdevolucion'])->name('materiales.setdevolucion');
+route::post('setdevolucion-material', [MaterialesController::class, 'setdevolucion'])->name('materiales.setdevolucion');
+route::get('materiales-informe/{id}', [MaterialesController::class, 'informe'])->name('materiales.informe'); 
+route::get('materiales-recibirdevolucion', [MaterialesController::class, 'recibirdevolucion'])->name('materiales.recibirdevolucion');
+route::get('materiales-recibedevolucion/{id}', [MaterialesController::class, 'recibedevolucion'])->name('materiales.recibedevolucion');
+
+
+
+
+
 //actividades
 
 route::get('listar-actividades', [ActividadesController::class, 'index'])->name('actividades.index');
@@ -71,9 +79,12 @@ route::post('store-actividad', [ActividadesController::class, 'store'])->name('a
 route::get('editar-actividad/{id}', [ActividadesController::class, 'edit'])->name('actividades.edit');
 route::post('update-actividad/{id}', [ActividadesController::class, 'update'])->name('actividades.update');
 route::get('ver-actividad/{id}', [ActividadesController::class, 'show'])->name('actividades.ver');
-
+route::post('cerrar-actividad', [ActividadesController::class, 'cerrar'])->name('actividades.cerrar');
+route::get('cerrados-actividades', [ActividadesController::class, 'trabajosrealizados'])->name('actividades.trabajosrealizados');
 route::post('create2-actividad',[ActividadesController::class, 'create2'])->name('actividades.create2');
+route::get('valorizar-actividad/{id}', [ActividadesController::class, 'valorizar'])->name('actividades.valorizar');
+route::post('setcotizacion-actividad/{id}', [ActividadesController::class, 'setcotizar'])->name('actividades.cotizacion');
 
 
-
+});
 require __DIR__.'/auth.php';

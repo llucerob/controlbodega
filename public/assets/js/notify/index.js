@@ -1,6 +1,6 @@
 (function ($) {
   "use strict";
-  var notify = $.notify('<i class="fa-regular fa-bell"></i><strong>Loading</strong> page Do not close this page...', {
+  var notify = $.notify('<i class="fa-regular fa-bell"></i><strong>Cargando</strong>Paciencia por favor...', {
     type: "theme",
     allow_dismiss: true,
     delay: 2000,
@@ -12,7 +12,4 @@
     },
   });
 
-  setTimeout(function () {
-    notify.update("message", '<i class="fa-regular fa-bell"></i><strong>Loading</strong> Inner Data.');
-  }, 1000);
 })(jQuery);

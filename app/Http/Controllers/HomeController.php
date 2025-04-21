@@ -6,6 +6,7 @@ use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Actividad;
+use App\Models\Proveedor;
 
 
 class HomeController extends Controller
@@ -23,7 +24,19 @@ class HomeController extends Controller
         
         
         if(auth()->user()->hasRole('admin')) {
-            return view('dashboard.admin');
+
+            
+
+            $actividad = [];
+            $actividad['proveedores']   = (int)Proveedor::count();
+            $actividad['en_proceso']    = Actividad::where('estado', 'en proceso')->count();
+            $actividad['por_valorizar'] = Actividad::where('estado', 'terminado')->count();
+            $actividad['valorizada']    = Actividad::where('estado', 'valorizado')->count();
+
+            //dd($actividad);
+
+
+            return view('dashboard.admin', compact('actividad'));
         } elseif(auth()->user()->hasRole('supervisor')) {
             return view('dashboard.supervisor');
         } elseif(auth()->user()->hasRole('bodega')) {

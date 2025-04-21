@@ -108,7 +108,7 @@
     </style>
 <div class="receipt-main">
    <table class="col-12 receipt-header">
-    <td><img src="{{asset('assets/images/logo/logom.png')}}" alt="Logo Municipal" width="220px"></td>
+    <td><img src="{{asset('assets/images/logo_serviciosayf.png')}}" alt="Logo Empresa" width="220px"></td>
     <td class="text-right">
         <div class="receipt-right">
             <h5></h5>

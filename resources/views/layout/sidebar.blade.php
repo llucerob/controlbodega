@@ -2,8 +2,7 @@
 <div class="sidebar-wrapper" data-sidebar-layout="stroke-svg">
     <div>
         <div class="logo-wrapper"><a href="#"><img class="img-fluid for-light"
-                    src="{{ asset('assets/images/logo/logo.png') }}" alt=""><img class="img-fluid for-dark"
-                    src="{{ asset('assets/images/logo/logo_dark.png') }}" alt=""></a>
+                    src="{{ asset('assets/images/logo.png') }}"alt=""></a>
             <div class="back-btn"><i class="fa-solid fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
                 </i></div>
@@ -29,7 +28,7 @@
                             <h6>Valorizaciones</h6>
                         </div>
                     </li>
-                    <li class="sidebar-list"><i class="fa-solid fa-thumbtack"> </i><a
+                    <!--<li class="sidebar-list"><i class="fa-solid fa-thumbtack"> </i><a
                         class="sidebar-link sidebar-title" href="javascript:void(0)"><svg class="stroke-icon">
                             <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-project') }}"></use>
                         </svg><svg class="fill-icon">
@@ -40,7 +39,7 @@
                         <li><a href="#">Listar Usuarios</a></li>
                         <li><a href="#">Crear Usuario</a></li>
                     </ul>
-                    </li>
+                    </li>!-->
                     <li class="sidebar-list"><i class="fa-solid fa-thumbtack"> </i><a
                         class="sidebar-link sidebar-title" href="javascript:void(0)"><svg class="stroke-icon">
                             <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-project') }}"></use>
@@ -49,7 +48,7 @@
                         </svg><span>Valorizaciones</span></a>
                     <ul class="sidebar-submenu">
                         
-                        <li><a href="#">Trabajos Realizados</a></li>
+                        <li><a href="{{ route('actividades.trabajosrealizados') }}">Trabajos Realizados</a></li>
                         <li><a href="#">Historial Valorizaciones</a></li>
                         <li><a href="#">Valorizar Bodega</a></li>
                         
@@ -95,7 +94,7 @@
                             <li><a href="{{ route('materiales.index') }}">Listar Materiales</a></li>
                             <li><a href="{{ route('materiales.create') }}">Crear Nuevo Material</a></li>
                             <li><a href="{{ route('materiales.reservados') }}">Materiales Reservados</a></li>
-                            <li><a href="#">Recibir Devolucion</a></li>
+                            <li><a href="{{ route('materiales.recibirdevolucion') }}">Recibir Devolucion</a></li>
                             <li><a href="#">Consolidado sin Stock</a></li>
                     
                         </ul>
