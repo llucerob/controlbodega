@@ -422,6 +422,7 @@ class MaterialesController extends Controller
             $array[$key]['fecha']       = Carbon::parse($o->ocupados->created_at)->format('Y-m-d');
             $array[$key]['cantidad']    = $o->ocupados->cantidad;
             $array[$key]['por_devolver']       = $o->ocupados->por_devolver;
+            $array[$key]['devolucion']       = $o->ocupados->devolucion;
             $total = $total + $o->ocupados->cantidad;
             $totalpordevolver = $totalpordevolver + $o->ocupados->por_devolver;
 
@@ -467,6 +468,7 @@ class MaterialesController extends Controller
         $arreglo['pordevolver'] = $totalpordevolver;
         $arreglo['stock']       = $material->cantidad;
         $arreglo['nombre']      = $material->nombre;
+        $arreglo['unidad']     = $material->esmedida->abreviatura;
 
 
         //dd($arreglo);
@@ -557,6 +559,7 @@ class MaterialesController extends Controller
             $o->devolucion = $o->por_devolver;
             $o->por_devolver = 0;
             $o->update();
+
             $bodega = Material::findorFail($o->material_id);
             $bodega->cantidad = $bodega->cantidad + $o->devolucion;
             $bodega->update();

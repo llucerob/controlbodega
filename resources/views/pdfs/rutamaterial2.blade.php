@@ -33,6 +33,7 @@
                         <th scope="col">Fecha Utilización</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Por Devolver</th>
+                        <th scope="col">Devueltos</th>
                       
                         
                         
@@ -47,6 +48,8 @@
                             <td scope="row">{{ $m['fecha'] }}</td>
                             <td scope="row">{{ $m['cantidad'] }}</td>
                             <td scope="row">{{ $m['por_devolver'] }}</td>
+                            
+                            <td scope="row">{{ $m['devolucion'] }}</td>
                             
                                                     
                         </tr>

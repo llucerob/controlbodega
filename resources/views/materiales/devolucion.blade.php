@@ -68,7 +68,7 @@
 										
 										<td class="text-center">
 											<input type="text" name="ocupado[{{$key}}][id]" value="{{$o->id}}"  hidden>
-											<input type="number" required name="ocupado[{{$key}}][cantidad]" min="0" max="{{$o->cantidad}}">
+											<input type="number" required name="ocupado[{{$key}}][cantidad]" value="0" min="0" max="{{$o->cantidad}}">
 											<strong>[{{ $o->material->esmedida->abreviatura }}]</strong>
 										</td>
 

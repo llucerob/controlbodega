@@ -139,7 +139,7 @@
    <table class="col-12 receipt-header receipt-header-mid">
     <td>
         <div class="receipt-center text-center">
-            <h4>Material {{$nombre}}</h4>
+            <h4>Material {{$nombre}} en bodega : {{$stock}} [{{$unidad}}]</h4>
         </div>
     </td>
     
@@ -154,6 +154,7 @@
             <th>Fecha Utilización</th>
             <th>Cantidad</th>
             <th>Por Devolver</th>
+            <th>Devueltos</th>
             
         </tr>
     </thead>
@@ -165,7 +166,8 @@
               <td>{{ $m['ubicacion'] }}</td>
               <td>{{ $m['fecha'] }}</td>
               <td>{{ $m['cantidad'] }}</td>
-              <td>{{ $m['por_devolver'] }}</td>                                        
+              <td>{{ $m['por_devolver'] }}</td>    
+              <td>{{ $m['devolucion'] }}</td>                                     
            </tr>
          @endforeach
           @foreach ($arr as $r)

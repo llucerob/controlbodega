@@ -153,7 +153,7 @@ class ActividadesController extends Controller
 
         if($actividad['interna'] == 'si'){
 
-            $new_actividad->interna = 'si'; 
+            $new_actividad->actividad_interna = 'si'; 
             $new_actividad->emergencia = 'no';
             $new_actividad->ticket = null;
 
@@ -161,11 +161,13 @@ class ActividadesController extends Controller
 
             $new_actividad->ticket = $actividad['ticket'];
             $new_actividad->emergencia = 'no';
+            $new_actividad->actividad_interna = 'no';
 
         }else{
 
             $new_actividad->emergencia = 'si';
             $new_actividad->ticket=null;
+            $new_actividad->actividad_interna = 'no';
             
         }
         $new_actividad->ubicacion = $actividad['ubicacion'];
