@@ -210,7 +210,7 @@ foreach($ocupados as $p){
         $actividad = Actividad::findOrFail($id);
         $inicio = Carbon::parse($actividad->inicio)->format('Y-m-d');
 
-        if($actividad->estado == 'terminado'){
+        if($actividad->estado == 'terminado' || $actividad->estado == 'valorizado'){
             $fin = Carbon::parse($actividad->fin)->format('Y-m-d');
 
             //$dias = $inicio->diff($fin, true)->days;
@@ -370,5 +370,16 @@ foreach($ocupados as $p){
         return redirect()->route('actividades.index')->with('success', 'Se ha agregado cotizacion a la actividad');
 
    
+    }
+
+    public function historialvalorizacion(){
+        $actividades = Actividad::all();
+
+       
+
+        //dd($historial);
+
+        return view('actividades.historial', compact('actividades'));
+
     }
 }

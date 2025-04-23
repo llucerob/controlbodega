@@ -38,12 +38,21 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Valorizar Actividad " {{$actividad->nombre}} " en {{$actividad->ubicacion}} </h5>
-                        <h4>del {{$actividad->inicio}} al {{$actividad->fin}}</h4>
-                        
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h5>Valorizar Actividad " {{$actividad->nombre}} " en {{$actividad->ubicacion}} </h5>
+                                <h4>del {{$actividad->inicio}} al {{$actividad->fin}}</h4>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <a href="{{ route('actividades.index') }}" class="btn btn-primary">Volver</a>
+                            </div>
+                        </div>
+                                            
                         
                     </div>
                     <div class="card-body">
+                    
+                    
                         <div class="table-responsive">
                             <table class="display" id="actividades">
                                 <thead>

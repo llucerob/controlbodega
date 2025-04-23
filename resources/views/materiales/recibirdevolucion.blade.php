@@ -71,7 +71,7 @@
                                             <td>
                                                 <div class="d-flex">
                                                     
-                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEntregar">Entregar</button>
+                                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalEntregar">Recibir</button>
                                                 </div>
                                             </td>
                                             <div class="modal fade" id="modalEntregar" tabindex="-1" role="dialog" aria-labelledby="modalEntregar" aria-hidden="true">
@@ -90,7 +90,7 @@
                                                               <h4 class="text-center pb-2">¿Realmente desea recibir estos Materiales?</h4>
                                                               <p class="text-center">Esta acción no se puede deshacer</p>
                                                               
-                                                                <a class="btn btn-success d-flex text-center" href="{{ route('materiales.recibedevolucion',$a['actividad_id']) }}">Entregar</a>
+                                                                <a class="btn btn-success d-flex text-center" href="{{ route('materiales.recibedevolucion',$a['actividad_id']) }}">Recibir</a>
                                                              
                                                             </div>
                                                         </div>                                                   

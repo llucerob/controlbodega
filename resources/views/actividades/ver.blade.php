@@ -74,8 +74,8 @@
                                     </div>
                                     <div class="product-tab-content">
                                         <h6>Finalizada</h6>
-                                        @if($actividad->estado == 'terminado')
-                                            <p>{{ $actividad->inicio }}</p>
+                                        @if($actividad->estado == 'terminado' || $actividad->estado == 'valorizado')
+                                            <p>{{ $actividad->fin }}</p>
                                         @endif
                                     </div>
                                 </a></li>
@@ -127,8 +127,10 @@
                                                         <h5>Materiales Ocupados</h5>
                                                         
                                                     </div>
+                                                    @if($actividad->estado == 'en proceso')
                                                     <div class="card-header-right-btn"><a class="c-o-light"
                                                             href="{{ route('materiales.devolucion', $actividad->id) }}">Devolver</a></div>
+                                                            @endif
                                                 </div>
                                             </div>
                                             <div class="card-body px-0 pt-0">
@@ -145,6 +147,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach($actividad->ocupados as $key => $o)
+                                                            
                                                             <tr>
                                                                 <td>{{$o->nombre}} [{{$o->esmedida->abreviatura}}]</td>
                                                                 <td>{{$o->ocupados->cantidad}} [{{$o->esmedida->abreviatura}}]</td>
@@ -184,8 +187,10 @@
                                                         <h5>Materiales Reservados</h5>
                                                         
                                                     </div>
+                                                    @if($actividad->estado == 'en proceso')
                                                     <div class="card-header-right-btn"><a class="c-o-light"
                                                             href="{{ route('materiales.reservar', $actividad->id) }}">Reservar</a></div>
+                                                            @endif
                                                 </div>
                                             </div>
                                             <div class="card-body px-0 pt-0">
@@ -274,8 +279,7 @@
     
     <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
-
+    
     
    
   

@@ -76,6 +76,7 @@
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
+                      <a href="{{ route('actividades.index') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
@@ -87,6 +88,7 @@
                                             </svg></div>
                                     </div>
                                     <div>
+                                    
                                     <h4><span class="counter" data-target="{{ $actividad['en_proceso'] }}">{{ $actividad['en_proceso'] }}</span></h4><span
                                             class="f-light">Actividades en proceso</span>
                                     </div>
@@ -94,7 +96,10 @@
                                 
                             </div>
                         </div>
+                        </a>
+                        
                         <div class="col-xl-12">
+                        <a href="{{ route('proveedores.index') }}">
                             <div class="card widget-1">
                                 <div class="card-body">
                                     <div class="widget-content">
@@ -115,13 +120,17 @@
                                     
                                 </div>
                             </div>
+                            </a>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+            
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
+                    <a href="{{ route('actividades.trabajosrealizados') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
@@ -140,7 +149,9 @@
                                 
                             </div>
                         </div>
+                        </a>
                         <div class="col-xl-12">
+                        <a href="{{ route('actividades.historial') }}">
                             <div class="card widget-1">
                                 <div class="card-body">
                                     <div class="widget-content">
@@ -161,212 +172,14 @@
                                     
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-xxl-4 col-sm-6 ord-xl-1 ord-md-1 box-ord-1 box-col-6">
-                <div class="card">
-                    <div class="card-header card-no-border">
-                        <div class="header-top">
-                            <h5>Top Customers</h5>
-                            <div class="card-header-right-icon">
-                                <div class="dropdown icon-dropdown"><button class="btn dropdown-toggle"
-                                        id="customerButton" type="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false"><i class="icon-more-alt"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="customerButton"><a
-                                            class="dropdown-item" href="#!">Today</a><a class="dropdown-item"
-                                            href="#!">Tomorrow</a><a class="dropdown-item"
-                                            href="#!">Yesterday</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body main-customer-table px-0 pt-0">
-                        <div class="recent-table table-responsive custom-scrollbar">
-                            <table class="table" id="top-customer">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Customers</th>
-                                        <th>Total Purchase</th>
-                                        <th>Total Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard/user/2.jpg') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Jane Cooper</a>
-                                                    <p class="mb-0 f-light">#452140</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>65 Purchases</td>
-                                        <td class="f-w-500 txt-success">$970.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard/user/3.jpg') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Wade Warren</a>
-                                                    <p class="mb-0 f-light">#844967</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>42 Purchases</td>
-                                        <td class="f-w-500 txt-success">$300.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard/user/4.jpg') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Guy Hawkins</a>
-                                                    <p class="mb-0 f-light">#321489</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>38 Purchases</td>
-                                        <td class="f-w-500 txt-success">$900.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard/user/5.jpg') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Jake Spy</a>
-                                                    <p class="mb-0 f-light">#954687</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>23 Purchases</td>
-                                        <td class="f-w-500 txt-success">$300.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard-9/user/1.png') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Devin Jake</a>
-                                                    <p class="mb-0 f-light">#562778</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>12 Purchases</td>
-                                        <td class="f-w-500 txt-success">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard-9/user/2.png') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Jacob Jones</a>
-                                                    <p class="mb-0 f-light">#589356</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>10 Purchases</td>
-                                        <td class="f-w-500 txt-success">$420.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard-9/user/5.png') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Jams Bone</a>
-                                                    <p class="mb-0 f-light">#589657</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>10 Purchases</td>
-                                        <td class="f-w-500 txt-success">$440.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td> </td>
-                                        <td>
-                                            <div class="d-flex"><img class="img-fluid img-40 rounded-circle me-2"
-                                                    src="{{ asset('assets/images/dashboard-9/user/3.png') }}"
-                                                    alt="user">
-                                                <div class="img-content-box"><a class="f-w-500"
-                                                        href="#">Mili Pais</a>
-                                                    <p class="mb-0 f-light">#589654</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>12 Purchases</td>
-                                        <td class="f-w-500 txt-success">$240.00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-5 col-lg-6 box-col-6 ord-xl-2 ord-md-3 box-ord-2">
-                <div class="card">
-                    <div class="card-header card-no-border">
-                        <div class="header-top">
-                            <h5>Sales Statistical Overview</h5>
-                            <div class="card-header-right-icon">
-                                <div class="dropdown custom-dropdown"><button class="btn dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Year</button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#!">Day</a></li>
-                                        <li><a class="dropdown-item" href="#!">Month</a></li>
-                                        <li><a class="dropdown-item" href="#!">Year</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="row m-0 overall-card">
-                            <div class="col-12 p-0">
-                                <div class="chart-right">
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="card-body p-0 statistical-card">
-                                                <ul class="d-flex m-b-15">
-                                                    <li>
-                                                        <h5 class="counter" data-target="19897">0</h5><span
-                                                            class="f-light">Total Cost</span>
-                                                    </li>
-                                                    <li>
-                                                        <h5> $<span class="counter" data-target="849058">0</span></h5>
-                                                        <span class="f-light">Total Revenue</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="current-sale-container">
-                                                    <div id="chart-currently"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+       
             
            
             

@@ -48,8 +48,8 @@
                                         <th class="text-center">Id</th>
                                         <th class="text-center">Tipo</th>
                                         <th class="text-center">Ticket</th>
-                                        <th class="text-center">Nombre</th>
-                                        <th class="text-center">Ubicación</th>
+                                        <th class="text-center" width="25%">Nombre</th>
+                                        <th class="text-center" width="15%">Ubicación</th>
                                         <th class="text-center">Inicio</th>
                                         <th class="text-center">Estado</th>
                                         <th class="text-center">Acciones</th>
@@ -159,7 +159,8 @@
                             },
                         
                         
-                        ], 
+                        ],
+                    order: [[0, 'desc']],  
                                 
                         
                 });

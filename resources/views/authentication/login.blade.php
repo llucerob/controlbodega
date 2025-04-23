@@ -12,8 +12,7 @@
                 <div class="login-card login-dark">
                     <div>
                         <div><a class="logo" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('assets/images/logo/logo.png') }}" alt="looginpage"><img class="img-fluid for-dark"
-                                    src="{{ asset('assets/images/logo/logo_dark.png') }}" alt="looginpage"></a></div>
+                                    src="{{ asset('assets/images/logo/logo_serviciosayf.png') }}" width="200px" alt="looginpage"></a></div>
                         <div class="login-main">
                             <form class="theme-form"  method="POST" action="{{ route('login') }}">
                              @csrf

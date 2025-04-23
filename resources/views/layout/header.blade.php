@@ -21,18 +21,13 @@
                             <div class="d-flex profile-media"><img class="b-r-10"
                                     src="{{ asset('assets/images/dashboard/profile.png') }}" alt="">
                                 <div class="flex-grow-1"><span>{{Auth::user()->name}}</span>
-                                    <p class="mb-0">@if(Auth::user()->hasRole('admin')) Administrador @endif<i class="middle fa-solid fa-angle-down"></i></p>
+                                    <p class="mb-0">@if(Auth::user()->hasRole('admin')) Administrador @elseif(Auth::user()->hasRole('supervisor')) Supervisor @elseif(Auth::user()->hasRole('bodega')) Bodega @else Secretaria  @endif<i class="middle fa-solid fa-angle-down"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
-                                <li><a href="#"><i data-feather="user"></i><span>My Profile </span></a></li>
-                                <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-                                <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a>
-                                </li>
-                                <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a>
-                                </li>
-                                <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i data-feather="log-in"> </i><span>Log out</span></a></li>
-                                <form action="#" method="POST" class="d-none" id="logout-form">
+                                
+                                <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i data-feather="log-in"> </i><span>Salir</span></a></li>
+                                <form action="{{route('logout')}}" method="POST" class="d-none" id="logout-form">
                                     @csrf
                                 </form>
                             </ul>
@@ -45,8 +40,7 @@
 <div class="ProfileCard-realName">name</div>
 </div>
 </div></script>
-                <script class="empty-template"
-                    type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
+                
             </div>
         </div>
         <!-- Page Header Ends -->

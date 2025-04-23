@@ -1,8 +1,8 @@
 <!-- Page Sidebar Start-->
 <div class="sidebar-wrapper" data-sidebar-layout="stroke-svg">
     <div>
-        <div class="logo-wrapper"><a href="#"><img class="img-fluid for-light"
-                    src="{{ asset('assets/images/logo.png') }}"alt=""></a>
+        <div class="logo-wrapper text-center"><a href="#"><img class="img-fluid for-light"
+                    src="{{ asset('assets/images/logo/logo_serviciosayf.png') }}" width="80px" alt=""></a>
             <div class="back-btn"><i class="fa-solid fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
                 </i></div>
@@ -49,7 +49,7 @@
                     <ul class="sidebar-submenu">
                         
                         <li><a href="{{ route('actividades.trabajosrealizados') }}">Trabajos Realizados</a></li>
-                        <li><a href="#">Historial Valorizaciones</a></li>
+                        <li><a href="{{ route('actividades.historial') }}">Historial Valorizaciones</a></li>
                         <li><a href="#">Valorizar Bodega</a></li>
                         
                     </ul>
@@ -95,7 +95,7 @@
                             <li><a href="{{ route('materiales.create') }}">Crear Nuevo Material</a></li>
                             <li><a href="{{ route('materiales.reservados') }}">Materiales Reservados</a></li>
                             <li><a href="{{ route('materiales.recibirdevolucion') }}">Recibir Devolucion</a></li>
-                            <li><a href="#">Consolidado sin Stock</a></li>
+                            
                     
                         </ul>
                     </li>

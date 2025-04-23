@@ -84,6 +84,7 @@ route::get('cerrados-actividades', [ActividadesController::class, 'trabajosreali
 route::post('create2-actividad',[ActividadesController::class, 'create2'])->name('actividades.create2');
 route::get('valorizar-actividad/{id}', [ActividadesController::class, 'valorizar'])->name('actividades.valorizar');
 route::post('setcotizacion-actividad/{id}', [ActividadesController::class, 'setcotizar'])->name('actividades.cotizacion');
+route::get('historial-actividad', [ActividadesController::class, 'historialvalorizacion'])->name('actividades.historial');
 
 
 });

@@ -25,7 +25,7 @@
                                     <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                                 </svg></a></li>
                         <li class="breadcrumb-item">Actividades</li>
-                        <li class="breadcrumb-item active">Cerradas</li>
+                        <li class="breadcrumb-item active">Historial</li>
                     </ol>
                 </div>
             </div>
@@ -47,9 +47,10 @@
                                 <thead>
                                     <tr>
                                         
+                                        <th class="text-center">Id</th>
                                         <th class="text-center">Ticket</th>
-                                        <th class="text-center">Nombre</th>
-                                        <th class="text-center">Ubicación</th>
+                                        <th class="text-center" width="25%">Nombre</th>
+                                        <th class="text-center"  width="20%">Ubicación</th>
                                         <th class="text-center">Inicio</th>
                                         <th class="text-center">Término</th>
                                         
@@ -68,7 +69,7 @@
     
                                         
                                         <tr>
-                                            
+                                            <td class="text-center">{{ $a['id'] }}</td>
                                             <td class="text-center">@if($a['actividad_interna'] == 'si' ) ACT. INTERNA @elseif($a['emergencia'] == 'si') ES EMERGENCIA @else {{ $a['ticket'] }} @endif</td>
                                             <td class="text-center">{{ $a['nombre'] }}</td>
                                             <td class="text-center">{{ $a['ubicacion'] }}</td>
@@ -78,16 +79,7 @@
                                             
                                         
                                             <td class="text-center">
-                                                @if($a['actividad_interna'] == 'si' && $a['archivo'] == null)
-
-
-                                                @elseif($a['actividad_interna'] == 'no' )
-
-                                                <a type="button" class="btn btn-info" href="{{ url('/storage/'.$a['archivo']) }}"><i class="fa  fa-download"></i></a>
-                                            
-                                                @endif
- 
-                                                <a type="button" class="btn btn-danger" href="{{ route('actividades.valorizar', $a['id']) }}"><i class="fa  fa-usd"></i></a>
+                                                <a type="button" class="btn btn-danger" href="{{ route('actividades.ver', $a['id']) }}"><i class="fa  fa-eye"></i></a>
     
                                             </td>
                                         </tr>

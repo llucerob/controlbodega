@@ -108,7 +108,7 @@
     </style>
 <div class="receipt-main">
    <table class="col-12 receipt-header">
-    <td><img src="{{asset('assets/images/logo_serviciosayf.png')}}" alt="Logo Empresa" width="220px"></td>
+    <td><img src="{{asset('assets\images\logo\logo_serviciosayf.png')}}" alt="Logo Empresa" width="320px"></td>
     <td class="text-right">
         <div class="receipt-right">
             <h5></h5>
@@ -121,25 +121,11 @@
    </table>
 
 
-   <table class="col-12 receipt-header receipt-header-mid">
-    <td>
-        
-    </td>
-    <td>
-        <div class="receipt-right text-left">
-            
-            
-            
-        </div>
-    </td>
-    <td>
-        
-    </td>
-   </table>
+   
    <table class="col-12 receipt-header receipt-header-mid">
     <td>
         <div class="receipt-center text-center">
-            <h4>Material {{$nombre}} en bodega : {{$stock}} [{{$unidad}}]</h4>
+            <h5>Material {{$nombre}} </h5>
         </div>
     </td>
     
@@ -186,14 +172,16 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td class="text-danger">
                 <p style="color:#04346c;">Total Ocupados</p>
             </td>
             <td  class="text-danger">
-                <p style="color:#04346c;">{{number_format($salidas,0,',','.')}}</p>
+                <p style="color:#04346c;">{{number_format($salidas,0,',','.')}}  [{{$unidad}}]</p>
             </td>
         </tr>
         <tr >
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -201,11 +189,12 @@
                 <p style="color:#04346c;">Total Por Devolver</p>
             </td>
             <td  class="text-danger">
-                <p style="color:#04346c;">{{number_format($pordevolver,0,',','.')}}</p>
+                <p style="color:#04346c;">{{number_format($pordevolver,0,',','.')}} [{{$unidad}}]</p>
             </td>
         </tr>
 
         <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -213,7 +202,7 @@
                 <p style="color:#04346c;">Total Reservados</p>
             </td>
             <td class="text-danger">
-                <p style="color:#04346c;">{{number_format($reservas,0,',','.')}}</p>
+                <p style="color:#04346c;">{{number_format($reservas,0,',','.')}}  [{{$unidad}}]</p>
             </td>
         </tr>
 
@@ -221,11 +210,24 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td class="text-danger">
                 <p style="color:#04346c;">Total Compras</p>
             </td>
             <td class="text-danger">
-                <p style="color:#04346c;">{{number_format($entradas,0,',','.')}} </p>
+                <p style="color:#04346c;">{{number_format($entradas,0,',','.')}}  [{{$unidad}}]</p>
+            </td>
+        </tr>
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-danger">
+                <p style="color:#04346c;">Stock bodega</p>
+            </td>
+            <td class="text-danger">
+                <p style="color:#04346c;">{{number_format($stock,0,',','.')}}  [{{$unidad}}] </p>
             </td>
         </tr>
         
@@ -233,28 +235,26 @@
 </table>
 <table class="col-12 receipt-header receipt-header-mid receipt-footer mt-5">
     
-    <td class="text-left">
+    <td class="text-center">
         <div class="receipt-right">
-            <div class="receipt-right text left mt-3">
-                <p><b></b></p>
-                <p><b></b></p>
-        
-            </div>
-           
             
-           
         </div>
     </td>
     <td>
         <div class="receipt-right">
-            
-            
-            
+            <div class="receipt-right text-center mt-3">
+
+                <h5>El total de compras debe ser:  </h5>
+                <P><STRONG> La sumatoria del total de ocupados + el total de reservados + el total de devueltos + el total por devoler</STRONG></P>
+                <p class="text-center"><STRONG>{{$stock}} + {{$reservas}} + {{$pordevolver}} + {{$salidas}} = {{$stock+$reservas+$pordevolver+$salidas}}</STRONG></p>
+                <p></p>
+        
+            </div> 
         </div>
     </td>
     <td>
         <div class="receipt-left mt-5">
-            <h1></h1>
+            
         </div>
     </div>
     </td>
