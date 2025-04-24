@@ -455,7 +455,7 @@ INSERT INTO materiales(id, nombre, valor_unitario,marca,cantidad,medida, min_sto
 (750, 'Prensas Crosby 1/8', 560, 'No se Especifica', 56.0, 13, 1, '2023-10-02 15:13:20', '2025-04-15 21:38:24'),
 (751, 'Prensas Crosby 5/16', 1, 'No se Especifica', 0.0, 13, 1, '2023-10-02 15:14:40', '2024-03-04 14:12:53'),
 (752, 'Tabla de Cielo 1/2 x 4', 1000, 'No se Especifica', 8.0, 13, 1, '2023-10-02 15:47:25', '2024-11-29 16:15:52');
-INSERT INTO `materiales` (`id`, `nombre`, `valor_unitario`, `marca`, `cantidad`, `medida`, `min_stock`, `created_at`, `updated_at`) VALUES
+INSERT INTO materiales(id,nombre,valor_unitario,marca,cantidad,medida,min_stock,created_at,updated_at) VALUES
 (753, 'Platina de 25 mm', 1, 'No se Especifica', 0.0, 13, 1, '2023-10-02 15:49:39', '2025-02-05 17:34:31'),
 (754, 'Tee Sanitario 110 x 75 mm', 5000, 'No se Especifica', 1.0, 13, 1, '2023-10-02 16:00:28', '2023-10-02 16:02:17'),
 (755, 'Tee Sanitario 110 x 40 mm', 5000, 'No se Especifica', 0.0, 13, 1, '2023-10-02 16:01:31', '2024-10-01 19:47:49'),
