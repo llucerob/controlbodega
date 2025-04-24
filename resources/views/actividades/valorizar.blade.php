@@ -75,7 +75,7 @@
                                     
                                     @foreach ($actividad->ocupados  as $a)
     
-                                    @if($a->ocupados->cantidad != 0)
+                                    @if($a->ocupados->cantidad > 0)
                                         <tr>
                                             
                                             <td class="text-center">{{$a->nombre }}</td>

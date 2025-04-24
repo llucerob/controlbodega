@@ -1,7 +1,7 @@
 <!-- Page Sidebar Start-->
 <div class="sidebar-wrapper" data-sidebar-layout="stroke-svg">
     <div>
-        <div class="logo-wrapper text-center"><a href="#"><img class="img-fluid for-light"
+        <div class="logo-wrapper text-center"><a href="{{route('dashboard')}}"><img class="img-fluid for-light"
                     src="{{ asset('assets/images/logo/logo_serviciosayf.png') }}" width="80px" alt=""></a>
             <div class="back-btn"><i class="fa-solid fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
@@ -56,7 +56,7 @@
                     </li>
                
                     
-                       
+                     @role(['admin','supervisor'])  
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Supervisor</h6>
@@ -76,9 +76,10 @@
                             <li><a href="{{ route('actividades.create')}}">Crear Actividad</a></li>
                         </ul>
                     </li>
+                    @endrole
                    
                    
-                    
+                     @role(['admin','bodega'])
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Bodega</h6>
@@ -99,7 +100,8 @@
                     
                         </ul>
                     </li>
-                    
+                    @endrole
+                    @role(['admin','secretaria'])
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Administrativo</h6>
@@ -146,6 +148,7 @@
                         
                     </ul>
                     </li>
+                    @endrole
                              
                     
                     

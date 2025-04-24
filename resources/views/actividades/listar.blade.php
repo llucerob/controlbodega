@@ -153,7 +153,7 @@
                         {data: 'estado'},
                         {
                             data: null,
-                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="reservar btn btn-danger btn-sm m-1" title="Reservar Material"><i class="fa-solid fa-plus"></i></button><button class="ver btn btn-secondary btn-sm m-1" title="Materiales Ocupados"><i class="fa-solid fa-eye"></i></button><button class="devolver btn btn-info btn-sm m-1" title="Devolucion Material"><i class="fa-solid fa-backward"></i></button><button class="cerrar btn btn-success btn-sm m-1" title="Cerrar Actividad" data-bs-toggle="modal" data-bs-target="#modalCerrar"><i class="far fa-thumbs-up"></i></button>',
+                            defaultContent: ' @role(['admin','supervisor'])<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button>@endrole<button class="reservar btn btn-danger btn-sm m-1" title="Reservar Material"><i class="fa-solid fa-plus"></i></button><button class="ver btn btn-secondary btn-sm m-1" title="Materiales Ocupados"><i class="fa-solid fa-eye"></i></button><button class="devolver btn btn-info btn-sm m-1" title="Devolucion Material"><i class="fa-solid fa-backward"></i></button><button class="cerrar btn btn-success btn-sm m-1" title="Cerrar Actividad" data-bs-toggle="modal" data-bs-target="#modalCerrar"><i class="far fa-thumbs-up"></i></button>',
                            
                                 
                             },

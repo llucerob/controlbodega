@@ -382,4 +382,14 @@ foreach($ocupados as $p){
         return view('actividades.historial', compact('actividades'));
 
     }
+
+    public function activar($id){
+        $actividad = Actividad::findOrFail($id);
+
+        $actividad->estado = 'en proceso';
+        $actividad->update();
+
+        return redirect()->route('actividades.index')->with('success', 'Se ha reactivado la actividad');
+
+    }
 }

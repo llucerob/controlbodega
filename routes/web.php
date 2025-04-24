@@ -85,6 +85,7 @@ route::post('create2-actividad',[ActividadesController::class, 'create2'])->name
 route::get('valorizar-actividad/{id}', [ActividadesController::class, 'valorizar'])->name('actividades.valorizar');
 route::post('setcotizacion-actividad/{id}', [ActividadesController::class, 'setcotizar'])->name('actividades.cotizacion');
 route::get('historial-actividad', [ActividadesController::class, 'historialvalorizacion'])->name('actividades.historial');
+route::get('activar-actividad/{id}', [ActividadesController::class, 'activar'])->name('actividades.activar');
 
 
 });

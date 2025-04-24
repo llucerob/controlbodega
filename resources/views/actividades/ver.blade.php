@@ -174,11 +174,33 @@
                                                     <div class="card-header-right-btn"><a class="c-o-light"
                                                             href="{{ url('/storage/'.$actividad->archivo) }}">Descargar</a></div>
                                                             @endif
+
+                                                            
+
                                                 </div>
                                             </div>
+                                            
+                                            @role(['admin','secretaria'])
+
+                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group mb-3">
+                                                                            <label class="text-center form-label">Estado de la Actividad</label>
+                                                                            <div class="text-center">
+                                                                                <a class="btn btn-primary" href="{{ route('actividades.activar', $actividad->id) }}">Activar</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                            </div>
+                                            @endrole
                                              
                                         </div>
                                     </div>
+                                     
+
+                                    
                                     <div class="col-xl-8 xl-100 box-col-12">
                                         <div class="card">
                                             <div class="card-header card-no-border">

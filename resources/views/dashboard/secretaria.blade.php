@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Bodega</h3>
+                    <h3>Secretaria</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
@@ -76,7 +76,7 @@
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
-                      <a href="{{ route('materiales.index') }}">
+                      <a href="{{ route('actividades.index') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
@@ -89,8 +89,8 @@
                                     </div>
                                     <div>
                                     
-                                    <h4><span class="counter" data-target="{{ $bodega['materiales'] }}">{{ $bodega['materiales'] }}</span></h4><span
-                                            class="f-light">Materiales en bodega</span>
+                                    <h4><span class="counter" data-target="{{ $actividad['en_proceso'] }}">{{ $actividad['en_proceso'] }}</span></h4><span
+                                            class="f-light">Actividades en proceso</span>
                                     </div>
                                 </div>
                                 
@@ -99,7 +99,7 @@
                         </a>
                         
                         <div class="col-xl-12">
-                        <a href="{{ route('materiales.reservados') }}">
+                        <a href="{{ route('proveedores.index') }}">
                             <div class="card widget-1">
                                 <div class="card-body">
                                     <div class="widget-content">
@@ -113,8 +113,8 @@
                                                 </svg></div>
                                         </div>
                                         <div>
-                                            <h4> <span class="counter" data-target="{{ $bodega['reservados'] }}">{{ $bodega['reservados'] }}</span></h4><span
-                                                class="f-light">Materiales Por Entregar</span>
+                                            <h4> <span class="counter" data-target="{{ $actividad['proveedores'] }}">{{ $actividad['proveedores'] }}</span></h4><span
+                                                class="f-light">Proveedores</span>
                                         </div>
                                     </div>
                                     
@@ -126,10 +126,11 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
-                    <a href="{{ route('materiales.recibirdevolucion') }}">
+                    <a href="{{ route('proveedores.create') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
@@ -141,20 +142,40 @@
                                             </svg></div>
                                     </div>
                                     <div>
-                                        <h4> <span class="counter" data-target="{{ $bodega['pordevolver'] }}">{{ $bodega['pordevolver'] }}</span></h4><span
-                                            class="f-light">Materiales Por Devolver</span>
+                                        <h4> <span
+                                            class="f-light">Ingresar Proveedor</span></h4>
                                     </div>
                                 </div>
                                 
                             </div>
                         </div>
                         </a>
-                        
+                        <div class="col-xl-12">
+                        <a href="{{ route('materiales.index') }}">
+                            <div class="card widget-1">
+                                <div class="card-body">
+                                    <div class="widget-content">
+                                        <div class="widget-round primary">
+                                            <div class="bg-round"><svg class="fill-primary">
+                                                    <use href="{{ asset('assets/svg/icon-sprite.svg#c-invoice') }}">
+                                                    </use>
+                                                </svg><svg class="half-circle svg-fill">
+                                                    <use href="{{ asset('assets/svg/icon-sprite.svg#halfcircle') }}">
+                                                    </use>
+                                                </svg></div>
+                                        </div>
+                                        <div>
+                                            <h4> <span class="f-light">Listar Materiales</span></h4>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-
             
             
        

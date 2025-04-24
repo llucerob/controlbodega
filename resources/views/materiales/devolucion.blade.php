@@ -57,6 +57,8 @@
 
 									@foreach ($ocupados  as $key => $o)
 
+									@if($o->cantidad >0)
+
 									<tr>
 
 										<td class="text-center">
@@ -78,6 +80,7 @@
 										</td>
 
 								    </tr>
+									@endif
 									@endforeach
 								<tbody>
 									
