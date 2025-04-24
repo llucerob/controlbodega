@@ -397,9 +397,7 @@ class MaterialesController extends Controller
                 $material->update();
             }
         
-       
-
-        
+               
 
         return redirect()->route('actividades.index')->with('success', 'Material reservado correctamente');
     }
