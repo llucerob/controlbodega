@@ -134,7 +134,7 @@ class MaterialesController extends Controller
     {
         $material = Material::findOrFail($id);
         $compras = $material->compras()->get();
-        return view('materiales.listarcompras', compact('material', 'compras'));
+        return view('materiales.listar_compras', compact('material', 'compras'));
     }
 
     public function ajaxcomprasmaterial($id)
@@ -217,7 +217,7 @@ class MaterialesController extends Controller
     public function consultacompras()
     {
         $proveedores = Proveedor::all();
-        return view('materiales.consultaCompras', compact('proveedores'));
+        return view('materiales.consulta_compras', compact('proveedores'));
     }
 
 
@@ -263,7 +263,7 @@ class MaterialesController extends Controller
     
        
 
-    return view('materiales.resultadoCompras', compact('arreglo', 'nombreproveedor', 'desde', 'hasta'));
+    return view('materiales.resultado_compras', compact('arreglo', 'nombreproveedor', 'desde', 'hasta'));
 
     }
 
