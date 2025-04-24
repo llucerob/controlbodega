@@ -56,7 +56,7 @@
                     </li>
                
                     
-                     @role(['admin','supervisor'])  
+                     @role(['admin','secretaria','supervisor'])  
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Supervisor</h6>
