@@ -1,6 +1,4 @@
-
-
-INSERT INTO materiales (id, nombre, valor_unitario,marca,cantidad,medida, min_stock,created_at,updated_at) VALUES
+INSERT INTO materiales(id, nombre, valor_unitario,marca,cantidad,medida, min_stock,created_at,updated_at) VALUES
 (1, 'Abrazadera tipo A', 1834, 'No Especifica', 65.0, 13, 5, NULL, '2025-04-14 00:19:20'),
 (2, 'Abrazadera tipo B', 1840, 'No Especifica', 51.0, 13, 5, NULL, '2025-04-09 19:55:36'),
 (3, 'Abrazadera tipo E', 1865, 'No Especifica', 51.0, 13, 5, NULL, '2025-04-14 11:41:04'),
