@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class MedidasSeeder extends Seeder
 {
-    public function up()
+    public function run(): void
     {
         DB::table('medidas')->insert([
             ['id' => 1, 'nombre' => 'Bolsa', 'abreviatura' => 'Bols', 'created_at' => '2021-12-27 17:52:25', 'updated_at' => '2021-12-27 17:52:25'],
@@ -27,12 +27,5 @@ class MedidasSeeder extends Seeder
             ['id' => 22, 'nombre' => 'cubos', 'abreviatura' => 'cu', 'created_at' => '2022-04-05 15:56:41', 'updated_at' => '2022-04-05 15:56:41'],
             ['id' => 23, 'nombre' => 'Pliego', 'abreviatura' => 'Pliego', 'created_at' => '2024-05-17 14:43:15', 'updated_at' => '2024-05-17 14:43:15'],
         ]);
-    }
-
-    public function down()
-    {
-        DB::table('medidas')->whereIn('id', [
-            1, 3, 4, 7, 8, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23
-        ])->delete();
     }
 }

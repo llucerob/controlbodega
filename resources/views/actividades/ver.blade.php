@@ -186,7 +186,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-3">
-                                                                            <label class="text-center form-label">Estado de la Actividad</label>
+                                                                            <label class="text-center form-label">¿Desea dejar la actividad "en proceso"?</label>
                                                                             <div class="text-center">
                                                                                 <a class="btn btn-primary" href="{{ route('actividades.activar', $actividad->id) }}">Activar</a>
                                                                             </div>

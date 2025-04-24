@@ -44,7 +44,7 @@
                                 <h4>del {{$actividad->inicio}} al {{$actividad->fin}}</h4>
                             </div>
                             <div class="col-md-2 text-right">
-                                <a href="{{ route('actividades.index') }}" class="btn btn-primary">Volver</a>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar Trabajo</button>
                             </div>
                         </div>
                                             
@@ -88,6 +88,25 @@
                                     @endif
     
                                     @endforeach
+
+
+                                     @foreach ($actividad->trabajos  as $t)
+    
+                                    
+                                        <tr>
+                                            
+                                            <td class="text-center">{{$t->detalle }}</td>
+                                            <td class="text-center">{{$t->cantidad}}</td>
+                                            <td class="text-center">$ {{$t->valor}}</td>
+                                            <td class="text-center">{{date_format($t->created_at, 'Y-m-d')}}</td>
+                                            <td class="text-center">$ {{$t->cantidad * $t->valor}}</td>
+                                            
+                                        </tr>
+                                   
+    
+                                    @endforeach
+
+                                     
                                         
                                     
                                     
@@ -119,6 +138,67 @@
                         </form>
                         
                     </div>
+
+                     <!-- Modal -->
+									<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+										  <div class="modal-content">
+											<div class="modal-header">
+											<h5 class="modal-title" >Ingresara un trabajo anexo a la actividad</h5>
+											     
+
+											  	
+
+											</div>
+											<form class="card" action="{{ route('actividades.agregartrabajo', $actividad->id)}}" method="POST" enctype="multipart/form-data">
+												@csrf	
+											<div class="modal-body">
+
+												
+												
+												<div class="form-group  mb-3">
+                                                    <label class="form-label">Nombre Trabajo</label>
+                                                    <fieldset>
+                                                        <div class="input-group mt-1">
+                                                            <input class="form-control" type="text"  name="detalle" required placeholder="Ingrese nombre del Trabajo">
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="form-group  mb-3">
+                                                    <label class="form-label">Horas o veces</label>
+                                                    <fieldset>
+                                                        <div class="input-group mt-1">
+                                                            <input class="form-control" type="number" min="0" required name="cantidad" placeholder="Ingrese la cantidad de horas o veces" required>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="form-group  mb-3">
+                                                    <label class="form-label">Valor Unitario</label>
+                                                    <fieldset>
+                                                        <div class="input-group mt-1">
+                                                            <input class="form-control" type="number" min="0"  name="valor" placeholder="Ingrese valor unitario" required>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+
+											
+											</div>
+																						
+											<div class="modal-footer">
+
+												<button type="submit" class="btn btn-primary" >Cerrar Actividad</button>
+
+
+											
+											
+											</div>
+										</form>
+										  </div>
+										</div>
+									  </div>
+
+
+
                 </div>
             </div>
            
@@ -152,6 +232,7 @@
                 language: {
                         url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },
+                     "lengthMenu": [ [ -1], [ "Todos"] ],
         });
 
     });

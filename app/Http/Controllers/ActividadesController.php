@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Models\Trabajo;
 
 class ActividadesController extends Controller
 {
@@ -390,6 +391,20 @@ foreach($ocupados as $p){
         $actividad->update();
 
         return redirect()->route('actividades.index')->with('success', 'Se ha reactivado la actividad');
+
+    }
+    public function agregartrabajo(Request $request, $id){
+       
+        $trabajo = new Trabajo;
+        $trabajo->detalle = $request->input('detalle');
+        $trabajo->cantidad = $request->input('cantidad');
+        $trabajo->valor = $request->input('valor');
+        $trabajo->actividad_id = $id;
+        $trabajo->save();
+
+       
+
+        return redirect()->route('actividades.valorizar', $id)->with('success', 'Se ha agregado un nuevo trabajo a la actividad');
 
     }
 }

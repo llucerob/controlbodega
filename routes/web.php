@@ -10,7 +10,7 @@ use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\ProveedoresController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -86,6 +86,7 @@ route::get('valorizar-actividad/{id}', [ActividadesController::class, 'valorizar
 route::post('setcotizacion-actividad/{id}', [ActividadesController::class, 'setcotizar'])->name('actividades.cotizacion');
 route::get('historial-actividad', [ActividadesController::class, 'historialvalorizacion'])->name('actividades.historial');
 route::get('activar-actividad/{id}', [ActividadesController::class, 'activar'])->name('actividades.activar');
+route::post('argegartrabajo-actividad/{id}', [ActividadesController::class, 'agregartrabajo'])->name('actividades.agregartrabajo');
 
 
 });

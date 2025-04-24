@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Actividad extends Model
 {
@@ -22,6 +23,10 @@ class Actividad extends Model
                     ->as('reservados')
                     ->withPivot('id','cantidad','valor', 'medida_id')
                     ->withTimestamps();;
+    }
+    public function trabajos(): HasMany
+    {
+        return $this->hasMany(Trabajo::class, 'actividad_id', 'id');
     }
 
     
