@@ -1,4 +1,4 @@
-insert into `actividades`(`id`,`emergencia`,`ticket`,`nombre`,`ubicacion`,`inicio`,`fin`,`estado`,`archivo`,`valorizado`,`cotizacion`,`actividad_interna`,`created_at`,`updated_at`) values	
+insert into actividades (id,emergencia,ticket,nombre,ubicacion,inicio,fin,estado,archivo,valorizado,cotizacion,actividad_interna,created_at,updated_at) values	
 (36,'no',794559,'Reparacion de Tiket Agrocomercial Esmeralda','La Soya','2022-04-04','2022-04-07','valorizado','archivos/snc5mHgs8nvS56d4ptVsRkTxzzB4sb56WkbujPTv.jpeg','si',5087,'no','2022-04-03 20:35:09','2022-04-08 9:44:24'),
 (37,'no',795223,'Reparacion Tiket Agrocomercial Esmeralda Trigo','El Trigo','2022-04-04','2022-04-07','valorizado','archivos/Pmys7nE43fKR7biHQziQvXjawCfh0SLlltpfy4dZ.pdf','si',5086,'no','2022-04-03 20:41:16','2022-04-08 8:52:22'),
 (38,'si',null,'Reparacion Techo Esmeralda','Esmeralda','2022-04-04','2022-04-07','valorizado','archivos/YPMwZVO82TqKCDg0JNXPn57M9ivf51XFzoV1Acvv.pdf','si',5090,'no','2022-04-04 8:08:26','2022-04-08 9:59:18'),

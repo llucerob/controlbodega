@@ -1,6 +1,6 @@
 
 
-INSERT INTO `medidas` (`id`, `nombre`, `abreviatura`, `created_at`, `updated_at`) VALUES
+INSERT INTO medidas (id,nombre,abreviatura,created_at,updated_at) VALUES
 (1, 'Bolsa', 'Bols', '2021-12-27 17:52:25', '2021-12-27 17:52:25'),
 (3, 'Galon', 'Gal', '2021-12-27 17:52:25', '2021-12-27 17:52:25'),
 (4, 'Juego', 'Jueg', '2021-12-27 17:52:25', '2021-12-27 17:52:25'),

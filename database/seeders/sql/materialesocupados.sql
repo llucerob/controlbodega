@@ -1,4 +1,4 @@
-insert into `materialesocupados`(`id`,`actividad_id`,`material_id`,`cantidad`,`valor`,`medida_id`,`por_devolver`,`devolucion`,`created_at`,`updated_at`) values				
+insert into materialesocupados(id,actividad_id,material_id,cantidad,valor,medida_id,por_devolver,devolucion,created_at,updated_at) values				
 (71,36,11,1.0,2360,16,0,0,'2022-04-03 20:35:09','2022-04-04 7:38:53'),
 (72,36,19,1.0,4690,18,0,0,'2022-04-03 20:35:09','2022-04-04 7:38:56'),
 (73,36,100,2.0,5378,13,0,0,'2022-04-03 20:35:09','2022-04-04 7:39:04'),

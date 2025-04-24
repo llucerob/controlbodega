@@ -1,4 +1,4 @@
-INSERT INTO `compras` (`id`, `proveedor_id`, `material_id`, `cantidad`, `medida_id`,`valor_unitario`, `fecha_compra`,`factura`,`created_at`,`updated_at`) VALUES
+INSERT INTO compras (id, proveedor_id, material_id,cantidad, medida_id,valor_unitario,fecha_compra,factura,created_at,updated_at) VALUES
 (1,27,1,135.0,13,1742,NULL,NULL,'2022-04-04 8:48:24',NULL),
 (2,27,2,82.0,13,1599,NULL,NULL,'2022-04-04 8:48:24',NULL),
 (3,27,3,77.0,13,1622,NULL,NULL,'2022-04-04 8:48:24',NULL),

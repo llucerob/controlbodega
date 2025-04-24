@@ -1,5 +1,5 @@
 
-INSERT INTO `provedores` (`id`, `nombre`, `direccion`, `nombre_contacto`, `telefono`, `email`, `created_at`, `updated_at`) VALUES
+INSERT INTO provedores (id,nombre,direccion,nombre_contacto,telefono,email,created_at,updated_at) VALUES
 (9, 'Ferretería La Herradura', 'Teniente Valenzuela 375 DOÑIHUE', 'Patricio Valenzuela Zamora', '+56 9 98832336', 'xxxx@gmail.com', '2022-03-25 18:43:04', '2022-03-31 14:13:45'),
 (10, 'Ferreteria  El Alamo', 'La Puntilla S/N COINCO', 'Jorge Barrera', '+56 9 66629455', 'el.alamo.mail@gmail.com', '2022-03-30 20:14:04', '2022-03-31 14:05:04'),
 (11, 'Comercial Rengo Lubricante', 'Arturo Prat  2734', 'Sergio Lopez', '+56 9 958031512', 'ventas@crfmobil.com', '2022-03-31 10:55:43', '2022-03-31 14:14:17'),
