@@ -71,6 +71,7 @@ class MaterialesController extends Controller
         } else {
             $newMaterial->marca = $request->input('marca');
         }
+        
         $newMaterial->cantidad          = 0;
         
         $newMaterial->medida            = $request->input('medida');
@@ -182,7 +183,7 @@ class MaterialesController extends Controller
 
         //dd($iva);
        if(isset($iva)){
-            $valor_unitario = $request->input('valor_unitario') * 1.19;
+            $valor_unitario = (int)$request->input('valor_unitario') * 1.19;
         }else{
             $valor_unitario = $request->input('valor_unitario');
         }
