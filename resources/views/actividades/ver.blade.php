@@ -142,7 +142,7 @@
                                                                 <th>Cantidad Ocupada</th>
                                                                 <th>Cantidad Por Devolver</th>
                                                                 <th>Cantidad Devuelta</th>
-                                                                <th>Valor</th>
+                                                                <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -153,7 +153,7 @@
                                                                 <td>{{$o->ocupados->cantidad}} [{{$o->esmedida->abreviatura}}]</td>
                                                                 <td>{{$o->ocupados->por_devolver}} [{{$o->esmedida->abreviatura}}] </td>
                                                                 <td>{{$o->ocupados->devolucion}} [{{$o->esmedida->abreviatura}}]</td>
-                                                                <td>{{$o->ocupados->valor}}</td>
+                                                                <td></td>
                                                             </tr>
                                                             @endforeach
                                                            
@@ -189,6 +189,14 @@
                                                                             <label class="text-center form-label">¿Desea dejar la actividad "en proceso"?</label>
                                                                             <div class="text-center">
                                                                                 <a class="btn btn-primary" href="{{ route('actividades.activar', $actividad->id) }}">Activar</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group mb-3">
+                                                                            <label class="text-center form-label">¿Desea Saber el valor de la actividad?</label>
+                                                                            <div class="text-center">
+                                                                                <a class="btn btn-warning" href="{{ route('actividades.valorizar', $actividad->id) }}">Ver Valores</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
