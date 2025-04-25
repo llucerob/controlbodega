@@ -123,8 +123,10 @@
                     </div>
                     
                     <div class="card-footer text-right">
-                        @if($actividad->valorizado == 'si')
+                        @if($actividad->valorizado == 'si' )
                             <h5>Esta actividad ya fue valorizada</h5>
+                        @elseif($actividad->estado == 'en proceso')
+                            
                         @else
     
                         <form action="{{ route('actividades.cotizacion', $actividad->id) }}" enctype="multipart/form-data" method="post">
