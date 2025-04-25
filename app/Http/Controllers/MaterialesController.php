@@ -107,8 +107,8 @@ class MaterialesController extends Controller
         $material->nombre            = $request->input('nombre');
         
         $material->marca            = $request->input('marca');
-        $material->min_stock        = $request->input('min_stock');
-        $material->medida           = $request->input('medida');
+        $material->min_stock        = $request->input('stock');
+        
         $material->update();
         return redirect()->route('materiales.index')->with('success', 'Material actualizado correctamente');
     }

@@ -78,11 +78,11 @@
                                     @if($a->ocupados->cantidad > 0)
                                         <tr>
                                             
-                                            <td class="text-center">{{$a->nombre }}</td>
-                                            <td class="text-center">{{$a->ocupados->cantidad}}</td>
-                                            <td class="text-center">$ {{$a->ocupados->valor}}</td>
-                                            <td class="text-center">{{date_format($a->ocupados->created_at, 'Y-m-d')}}</td>
-                                            <td class="text-center">$ {{$a->ocupados->cantidad * $a->ocupados->valor}}</td>
+                                            <td class="text-left">{{$a->nombre }}</td>
+                                            <td class="text-left">{{$a->ocupados->cantidad}}</td>
+                                            <td class="text-left">$ {{$a->ocupados->valor}}</td>
+                                            <td class="text-left">{{date_format($a->ocupados->created_at, 'Y-m-d')}}</td>
+                                            <td class="text-left">$ {{$a->ocupados->cantidad * $a->ocupados->valor}}</td>
                                             
                                         </tr>
                                     @endif
@@ -95,11 +95,11 @@
                                     
                                         <tr>
                                             
-                                            <td class="text-center">{{$t->detalle }}</td>
-                                            <td class="text-center">{{$t->cantidad}}</td>
-                                            <td class="text-center">$ {{$t->valor}}</td>
-                                            <td class="text-center">{{date_format($t->created_at, 'Y-m-d')}}</td>
-                                            <td class="text-center">$ {{$t->cantidad * $t->valor}}</td>
+                                            <td class="text-left">{{$t->detalle }}</td>
+                                            <td class="text-left">{{$t->cantidad}}</td>
+                                            <td class="text-left">$ {{$t->valor}}</td>
+                                            <td class="text-left">{{date_format($t->created_at, 'Y-m-d')}}</td>
+                                            <td class="text-left">$ {{$t->cantidad * $t->valor}}</td>
                                             
                                         </tr>
                                    
@@ -128,7 +128,7 @@
                             @csrf
                             
                             <div class="form-group row">
-                                <label class="col-form-label">Cotizaciónn N°: </label>
+                                <label class="col-form-label">Cotización N°: </label>
                                 <div class="col-md-6">
                                     <input type="number" class="form-control" name="cotizacion">
                                 </div>
