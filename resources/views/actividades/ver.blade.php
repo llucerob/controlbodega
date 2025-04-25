@@ -180,7 +180,7 @@
                                                 </div>
                                             </div>
                                             
-                                            @role(['admin','secretaria'])
+                                            @role(['admin'])
 
                                             <div class="card-body">
                                                                 <div class="row">
