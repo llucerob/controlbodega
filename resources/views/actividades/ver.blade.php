@@ -142,7 +142,7 @@
                                                                 <th>Cantidad Ocupada</th>
                                                                 <th>Cantidad Por Devolver</th>
                                                                 <th>Cantidad Devuelta</th>
-                                                                <th>Acciones</th>
+                                                                <th>Valor</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -153,7 +153,7 @@
                                                                 <td>{{$o->ocupados->cantidad}} [{{$o->esmedida->abreviatura}}]</td>
                                                                 <td>{{$o->ocupados->por_devolver}} [{{$o->esmedida->abreviatura}}] </td>
                                                                 <td>{{$o->ocupados->devolucion}} [{{$o->esmedida->abreviatura}}]</td>
-                                                                <td></td>
+                                                                <td>{{$o->ocupados->valor}}</td>
                                                             </tr>
                                                             @endforeach
                                                            
