@@ -366,7 +366,7 @@ foreach($ocupados as $p){
         $actividad->cotizacion = $request->input('cotizacion');
 
         $actividad->estado = 'valorizado';
-        $actividad->valorizado = 'no';
+        $actividad->valorizado = 'si';
         $actividad->update();
 
         return redirect()->route('actividades.index')->with('success', 'Se ha agregado cotizacion a la actividad');
