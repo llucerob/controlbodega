@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('actividades', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(1819);
             $table->enum('emergencia', ['si', 'no']);
             $table->integer('ticket')->nullable();
             $table->string('nombre');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('fin')->nullable();
             $table->enum('estado', ['en proceso', 'terminado', 'valorizado'])->default('en proceso');
             $table->string('archivo')->nullable();
-            $table->enum('valorizado', ['si', 'no']);
+            $table->enum('valorizado', ['si', 'no'])->default('no');
             $table->string('cotizacion')->nullable();
             $table->enum('actividad_interna', ['si', 'no']);
             $table->timestamps();

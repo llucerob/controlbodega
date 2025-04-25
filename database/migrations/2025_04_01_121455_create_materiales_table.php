@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('materiales', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(1250);
             $table->string('nombre');
             $table->integer('valor_unitario')->default('0');
             $table->string('marca');

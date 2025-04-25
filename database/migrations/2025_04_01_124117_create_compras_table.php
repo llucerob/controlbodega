@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(4907);
             $table->foreignId('proveedor_id')->constrained('provedores')->onDelete('cascade');
             $table->foreignId('material_id')->constrained('materiales')->onDelete('cascade');
             $table->float('cantidad',11,2);
