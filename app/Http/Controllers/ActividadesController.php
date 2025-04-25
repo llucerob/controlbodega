@@ -374,7 +374,7 @@ foreach($ocupados as $p){
     }
 
     public function historialvalorizacion(){
-        $actividades = Actividad::all();
+        $actividades = Actividad::where('estado', 'valorizado')->get();
 
        
 
