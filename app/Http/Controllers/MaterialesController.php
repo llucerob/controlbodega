@@ -144,14 +144,25 @@ class MaterialesController extends Controller
         $arr = [];
         foreach ($compras as $compra) {
 
+            if($compra->compras->fecha_compra != null){
             //dd($compra->compras);
-            $arr[] = [
-                'proveedor' => $compra->nombre,
-                'valor_unitario' => '$ '.$compra->compras->valor_unitario,
-                'cantidad' => $compra->compras->cantidad.' ['.$material->esmedida->abreviatura.']',
-                'fecha_compra' => Carbon::parse($compra->compras->fecha_compra)->format('Y-m-d'),
-                'factura' => $compra->compras->factura,
-            ];
+                $arr[] = [
+                    'proveedor' => $compra->nombre,
+                    'valor_unitario' => '$ '.$compra->compras->valor_unitario,
+                    'cantidad' => $compra->compras->cantidad.' ['.$material->esmedida->abreviatura.']',
+                    'fecha_compra' => Carbon::parse($compra->compras->fecha_compra)->format('Y-m-d'),             
+                    'factura' => $compra->compras->factura,
+                    ];
+            }else{
+                $arr[] = [
+                    'proveedor' => $compra->nombre,
+                    'valor_unitario' => '$ '.$compra->compras->valor_unitario,
+                    'cantidad' => $compra->compras->cantidad.' ['.$material->esmedida->abreviatura.']',
+                    'fecha_compra' => 'No especificada',       
+                    'factura' => $compra->compras->factura,
+                    ];
+                
+            }
         }
 
         return DataTables($arr)->tojson();
