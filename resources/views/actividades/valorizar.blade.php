@@ -123,6 +123,9 @@
                     </div>
                     
                     <div class="card-footer text-right">
+                        @if($actividad->valorizado == 'si')
+                            <h5>Esta actividad ya fue valorizada</h5>
+                        @else
     
                         <form action="{{ route('actividades.cotizacion', $actividad->id) }}" enctype="multipart/form-data" method="post">
                             @csrf
@@ -136,6 +139,7 @@
                             
                             <button type="submit" class="btn btn-success">Valorizar Actividad</button>
                         </form>
+                        @endif
                         
                     </div>
 
@@ -144,7 +148,7 @@
 										<div class="modal-dialog" role="document">
 										  <div class="modal-content">
 											<div class="modal-header">
-											<h5 class="modal-title" >Ingresara un trabajo anexo a la actividad</h5>
+											<h5 class="modal-title" >Ingresará un trabajo anexo a la actividad</h5>
 											     
 
 											  	
