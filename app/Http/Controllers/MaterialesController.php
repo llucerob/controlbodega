@@ -71,7 +71,7 @@ class MaterialesController extends Controller
         } else {
             $newMaterial->marca = $request->input('marca');
         }
-        
+
         $newMaterial->cantidad          = 0;
         
         $newMaterial->medida            = $request->input('medida');
@@ -105,8 +105,8 @@ class MaterialesController extends Controller
     {
         $material = Material::findOrFail($id);
         $material->nombre            = $request->input('nombre');
-        $material->valor_unitario    = $request->input('valor_unitario');
-        $material->cantidad         = $request->input('cantidad');
+        
+        $material->marca            = $request->input('marca');
         $material->min_stock        = $request->input('min_stock');
         $material->medida           = $request->input('medida');
         $material->update();
