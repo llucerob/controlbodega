@@ -23,6 +23,7 @@
                             <h6>Favoritos</h6>
                         </div>
                     </li>
+                    @role(['admin'])  
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Valorizaciones</h6>
@@ -54,6 +55,7 @@
                         
                     </ul>
                     </li>
+                    @endrole
                
                     
                      @role(['admin','secretaria','supervisor'])  
