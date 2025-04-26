@@ -103,6 +103,25 @@
                         </ul>
                     </li>
                     @endrole
+                    @role(['secretaria'])
+                    <li class="sidebar-main-title">
+                        <div>
+                            <h6>Bodega</h6>
+                        </div>
+                    </li>
+                    <li class="sidebar-list"><i class="fa-solid fa-thumbtack"></i><a
+                            class="sidebar-link sidebar-title" href="javascript:void(0)"><svg class="stroke-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-form') }}"></use>
+                            </svg><svg class="fill-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-form') }}"> </use>
+                            </svg><span>Materiales</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('materiales.index') }}">Listar Materiales</a></li>
+                            <li><a href="{{ route('materiales.create') }}">Crear Nuevo Material</a></li>
+                            
+                        </ul>
+                    </li>
+                    @endrole
                     @role(['admin','secretaria'])
                     <li class="sidebar-main-title">
                         <div>
