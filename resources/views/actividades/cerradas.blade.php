@@ -46,12 +46,12 @@
                             <table class="display" id="actividades">
                                 <thead>
                                     <tr>
-                                        
-                                        <th class="text-center">Ticket</th>
-                                        <th class="text-center">Nombre</th>
-                                        <th class="text-center">Ubicación</th>
-                                        <th class="text-center">Inicio</th>
-                                        <th class="text-center">Término</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center" width="10%">Ticket</th>
+                                        <th class="text-center" width="25%">Nombre</th>
+                                        <th class="text-center" width="10%">Ubicación</th>
+                                        <th class="text-center" width="10%">Inicio</th>
+                                        <th class="text-center" width="10%">Término</th>
                                         
                                         
                                         <th class="text-center">Acciones</th>
@@ -68,12 +68,13 @@
     
                                         
                                         <tr>
-                                            
-                                            <td class="text-center">@if($a['actividad_interna'] == 'si' ) ACT. INTERNA @elseif($a['emergencia'] == 'si') ES EMERGENCIA @else {{ $a['ticket'] }} @endif</td>
-                                            <td class="text-center">{{ $a['nombre'] }}</td>
-                                            <td class="text-center">{{ $a['ubicacion'] }}</td>
-                                            <td class="text-center">{{ $a['inicio'] }}</td>
-                                            <td class="text-center">{{ $a['fin'] }}</td>
+                                            <td class="text-left">{{ $a['id'] }}</td>
+                                            {{-- <td class="text-left">{{ $a['ticket'] }}</td> --}}
+                                            <td class="text-left">@if($a['actividad_interna'] == 'si' ) ACT. INTERNA @elseif($a['emergencia'] == 'si') ES EMERGENCIA @else {{ $a['ticket'] }} @endif</td>
+                                            <td class="text-left">{{ $a['nombre'] }}</td>
+                                            <td class="text-left">{{ $a['ubicacion'] }}</td>
+                                            <td class="text-left">{{ $a['inicio'] }}</td>
+                                            <td class="text-left">{{ $a['fin'] }}</td>
     
                                             
                                         

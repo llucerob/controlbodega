@@ -302,6 +302,12 @@ foreach($ocupados as $p){
             $cantidad = $cantidad + $m->ocupados->por_devolver;
 
         }
+
+        foreach($actividad->reservados as $m){
+
+            $cantidad = $cantidad + $m->reservados->cantidad;
+
+        }
         
         if($request->input('devolucion') == 'on')
         {
@@ -309,7 +315,10 @@ foreach($ocupados as $p){
 
         }elseif($cantidad > 0)
         {
-            return redirect()->route('actividades.index', $actividad->id)->with('info', 'No se puede cerrar la actividad, la devolucion debe ser aceptada por bodega');
+            return redirect()->route('actividades.index', $actividad->id)->with('info', 'No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
+        }elseif($actividad->estado != 'en proceso')
+        {
+            return redirect()->route('actividades.index', $actividad->id)->with('info', 'La actividad ya se encuentra cerrada');
         }else
         {
 
