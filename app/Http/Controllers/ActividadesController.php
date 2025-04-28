@@ -315,10 +315,12 @@ foreach($ocupados as $p){
 
         }elseif($cantidad > 0)
         {
-            return redirect()->route('actividades.index', $actividad->id)->with('info', 'No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
+            flash()->info('No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
+            return redirect()->route('actividades.index', $actividad->id);
         }elseif($actividad->estado != 'en proceso')
         {
-            return redirect()->route('actividades.index', $actividad->id)->with('info', 'La actividad ya se encuentra cerrada');
+            flash()->info('La actividad ya se encuentra cerrada');
+            return redirect()->route('actividades.index', $actividad->id);
         }else
         {
 
