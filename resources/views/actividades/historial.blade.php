@@ -123,6 +123,8 @@
                 language: {
                         url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },
+
+                order: [[5, 'desc']],  
                      
                 });
 
