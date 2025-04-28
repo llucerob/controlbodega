@@ -36,6 +36,7 @@
             @include('layout.sidebar')
 
             <div class="page-body">
+                
               
                
                 @yield('main_content')
