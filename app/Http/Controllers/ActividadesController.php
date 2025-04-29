@@ -67,6 +67,46 @@ class ActividadesController extends Controller
         
     }
 
+    public function ajaxaenproceso(){
+        
+        $act = Actividad::where('estado', 'en proceso')->get();
+        $arr = [];
+        foreach($act as $key => $a){
+            $arr[$key]['id'] = $a->id;
+
+            if($a->emergencia == 'si'){
+                $arr[$key]['tipo'] = 'Emergencia';
+            }elseif($a->interna == 'si'){
+                $arr[$key]['tipo'] = 'Interna';
+                
+            }else{
+                $arr[$key]['tipo'] = 'Ticket';
+            }
+
+
+
+            if($a->ticket == 'null'){
+                $arr[$key]['ticket'] = 'No presenta Ticket';
+            }else{
+                $arr[$key]['ticket'] = $a->ticket;
+            }
+            
+            
+            $arr[$key]['nombre'] = $a->nombre;
+            $arr[$key]['ubicacion'] = $a->ubicacion;
+            $arr[$key]['inicio'] = $a->inicio;
+            $arr[$key]['estado'] = $a->estado;
+            
+        }
+        
+     
+        
+         
+        
+        return DataTables($arr)->tojson();
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -380,7 +420,7 @@ foreach($ocupados as $p){
         $actividad->valorizado = 'si';
         $actividad->update();
 
-        return redirect()->route('actividades.index')->with('success', 'Se ha agregado cotizacion a la actividad');
+        return redirect()->route('actividades.trabajosrealizados')->with('success', 'Se ha agregado cotizacion a la actividad');
 
    
     }

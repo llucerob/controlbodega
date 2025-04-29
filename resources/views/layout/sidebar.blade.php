@@ -75,6 +75,30 @@
                         <ul class="sidebar-submenu">
                             
                             <li><a href="{{ route('actividades.index')}}">Listar Actividades</a></li>
+                            <li><a href="{{ route('actividades.enproceso')}}">Listar Actividades En Proceso</a></li>
+                            <li><a href="{{ route('actividades.create')}}">Crear Actividad</a></li>
+                        </ul>
+                    </li>
+                    @endrole
+
+                    @role(['secretaria','supervisor'])  
+                    <li class="sidebar-main-title">
+                        <div>
+                            <h6>Supervisor</h6>
+                        </div>
+                    </li>
+                   
+                 
+                    <li class="sidebar-list"><i class="fa-solid fa-thumbtack"> </i><a
+                            class="sidebar-link sidebar-title" href="javascript:void(0)"><svg class="stroke-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-project') }}"></use>
+                            </svg><svg class="fill-icon">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-project') }}"></use>
+                            </svg><span>Actividades </span></a>
+                        <ul class="sidebar-submenu">
+                            
+                            
+                            <li><a href="{{ route('actividades.enproceso')}}">Listar Actividades En Proceso</a></li>
                             <li><a href="{{ route('actividades.create')}}">Crear Actividad</a></li>
                         </ul>
                     </li>

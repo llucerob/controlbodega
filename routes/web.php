@@ -87,6 +87,8 @@ route::post('setcotizacion-actividad/{id}', [ActividadesController::class, 'setc
 route::get('historial-actividad', [ActividadesController::class, 'historialvalorizacion'])->name('actividades.historial');
 route::get('activar-actividad/{id}', [ActividadesController::class, 'activar'])->name('actividades.activar');
 route::post('argegartrabajo-actividad/{id}', [ActividadesController::class, 'agregartrabajo'])->name('actividades.agregartrabajo');
+route::get('enproceso-actividad', [ActividadesController::class, 'enproceso'])->name('actividades.enproceso');
+route::get('ajax-enproceso', [ActividadesController::class, 'ajaxenproceso'])->name('actividades.ajaxproceso');
 
 
 });
