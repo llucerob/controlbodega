@@ -98,7 +98,7 @@
                         <ul class="sidebar-submenu">
                             
                             
-                            <li><a href="{{ route('actividades.enproceso')}}">Listar Actividades En Proceso</a></li>
+                            <li><a href="{{ route('actividades.enproceso')}}">Actividades En Proceso</a></li>
                             <li><a href="{{ route('actividades.create')}}">Crear Actividad</a></li>
                         </ul>
                     </li>

@@ -38,11 +38,11 @@
             <div class="col-md-12 ">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Todas Las actividades</h5>
+                        <h5>Actividades en proceso</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive ">
-                            <table id="actividades" class="table table-bordered  table-striped">
+                            <table id="enproceso" class="table table-bordered  table-striped">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Id</th>
@@ -137,7 +137,7 @@
     <script>
         $(document).ready(function(){
 
-            var tabla = $('#actividades').DataTable({
+            var tabla = $('#enproceso').DataTable({
                 language: {
                         url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },

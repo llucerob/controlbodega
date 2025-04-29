@@ -77,7 +77,7 @@ class ActividadesController extends Controller
         
     }
 
-    public function ajaxaenproceso(){
+    public function ajaxenproceso(){
         
         $act = Actividad::where('estado', 'en proceso')->get();
         $arr = [];
