@@ -245,7 +245,7 @@
             <div class="receipt-right text-center mt-3">
 
                 <h5>El total de compras debe ser:  </h5>
-                <P><STRONG> La sumatoria del total de ocupados + el total de reservados + el total de devueltos + el total por devoler</STRONG></P>
+                <P><STRONG> La sumatoria del total del stock en bodega + el total de reservados +  el total por devoler + los ocupados </STRONG></P>
                 <p class="text-center"><STRONG>{{$stock}} + {{$reservas}} + {{$pordevolver}} + {{$salidas}} = {{$stock+$reservas+$pordevolver+$salidas}}</STRONG></p>
                 <p></p>
         
