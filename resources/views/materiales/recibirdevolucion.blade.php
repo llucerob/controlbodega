@@ -55,7 +55,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($arr as $a )
+                                    @foreach ($arr as $key => $a )
                                         <tr>
                                             <td class="text-center">{{$a['actividad_id']}}</td>
                                             <td class="text-center">{{$a['actividad_nombre']}}</td>
@@ -71,10 +71,10 @@
                                             <td>
                                                 <div class="d-flex">
                                                     
-                                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalEntregar">Recibir</button>
+                                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalEntregar{{$key}}">Recibir</button>
                                                 </div>
                                             </td>
-                                            <div class="modal fade" id="modalEntregar" tabindex="-1" role="dialog" aria-labelledby="modalEntregar" aria-hidden="true">
+                                            <div class="modal fade" id="modalEntregar{{$key}}" tabindex="-1" role="dialog" aria-labelledby="modalEntregar" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

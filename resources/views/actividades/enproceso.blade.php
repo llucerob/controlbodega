@@ -166,12 +166,12 @@
                 });
 
            
-            obtener_data_editar('#actividades', tabla);
-            obtener_data_reservar('#actividades',tabla);
-            obtener_data_editar('#actividades',tabla);
-            obtener_data_ver('#actividades',tabla);
-            obtener_data_devolver('#actividades',tabla);
-            obtener_data_cerrar('#actividades',tabla);
+            obtener_data_editar('#enproceso', tabla);
+            obtener_data_reservar('#enproceso',tabla);
+            obtener_data_editar('#enproceso',tabla);
+            obtener_data_ver('#enproceso',tabla);
+            obtener_data_devolver('#enproceso',tabla);
+            obtener_data_cerrar('#enproceso',tabla);
             
            
             
