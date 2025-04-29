@@ -76,7 +76,7 @@
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
-                      <a href="{{ route('actividades.index') }}">
+                      <a href="{{ route('actividades.enproceso') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
@@ -127,57 +127,7 @@
                 </div>
             </div>
             
-            <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
-                <div class="row">
-                    <div class="col-xl-12">
-                    <a href="{{ route('actividades.trabajosrealizados') }}">
-                        <div class="card widget-1">
-                            <div class="card-body">
-                                <div class="widget-content">
-                                    <div class="widget-round warning">
-                                        <div class="bg-round"><svg>
-                                                <use href="{{ asset('assets/svg/icon-sprite.svg#c-profit') }}"> </use>
-                                            </svg><svg class="half-circle svg-fill">
-                                                <use href="{{ asset('assets/svg/icon-sprite.svg#halfcircle') }}"></use>
-                                            </svg></div>
-                                    </div>
-                                    <div>
-                                        <h4> <span class="counter" data-target="{{ $actividad['por_valorizar'] }}">{{ $actividad['por_valorizar'] }}</span></h4><span
-                                            class="f-light">Actividades por Valorizar</span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        </a>
-                        <div class="col-xl-12">
-                        <a href="{{ route('actividades.historial') }}">
-                            <div class="card widget-1">
-                                <div class="card-body">
-                                    <div class="widget-content">
-                                        <div class="widget-round primary">
-                                            <div class="bg-round"><svg class="fill-primary">
-                                                    <use href="{{ asset('assets/svg/icon-sprite.svg#c-invoice') }}">
-                                                    </use>
-                                                </svg><svg class="half-circle svg-fill">
-                                                    <use href="{{ asset('assets/svg/icon-sprite.svg#halfcircle') }}">
-                                                    </use>
-                                                </svg></div>
-                                        </div>
-                                        <div>
-                                            <h4 class="counter" data-target="{{ $actividad['valorizada'] }}">{{ $actividad['valorizada'] }}</h4><span
-                                                class="f-light">Actividades Valorizadas</span>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+          
             
        
             

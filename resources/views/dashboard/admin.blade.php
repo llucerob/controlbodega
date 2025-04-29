@@ -76,7 +76,7 @@
             <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-3">
                 <div class="row">
                     <div class="col-xl-12">
-                      <a href="{{ route('actividades.index') }}">
+                      <a href="{{ route('actividades.enproceso') }}">
                         <div class="card widget-1">
                             <div class="card-body">
                                 <div class="widget-content">
