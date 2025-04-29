@@ -142,7 +142,7 @@
                         url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
                      },
                 
-                    ajax: '{{route('actividades.ajaxenproceso')}}',
+                    ajax: '{{route('actividades.ajaxproceso')}}',
                     columns: [
                         {data: 'id'},
                         {data: 'tipo'},
