@@ -58,7 +58,7 @@
                     @endrole
                
                     
-                     @role(['admin','secretaria','supervisor'])  
+                     @role(['admin'])  
                     <li class="sidebar-main-title">
                         <div>
                             <h6>Supervisor</h6>
