@@ -19,12 +19,22 @@ class ActividadesController extends Controller
      */
     public function index()
     {
-        $actividades = Actividad::where('estado', 'en proceso')->get();
+        //$actividades = Actividad::where('estado', 'en proceso')->get();
 
         //dd($actividades);
         
 
-        return view('actividades.listar', compact('actividades'));
+        return view('actividades.listar');
+    }
+
+    public function enproceso()
+    {
+        //$actividades = Actividad::where('estado', 'en proceso')->get();
+
+        //dd($actividades);
+        
+
+        return view('actividades.enproceso');
     }
 
     public function ajaxactividades(){
