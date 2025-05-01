@@ -184,6 +184,7 @@
 
                                             <div class="card-body">
                                                                 <div class="row">
+                                                                    @if($actividad->estado == 'terminado')
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-3">
                                                                             <label class="text-center form-label">¿Desea dejar la actividad "en proceso"?</label>
@@ -192,6 +193,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    @endif
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-3">
                                                                             <label class="text-center form-label">¿Desea Saber el valor de la actividad?</label>
