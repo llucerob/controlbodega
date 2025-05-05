@@ -11,6 +11,7 @@ use App\Models\Compra;
 use App\Models\Actividad;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Ocupado;
+use Flasher\Laravel\Facade\Flasher;
 
 
 class MaterialesController extends Controller
@@ -110,7 +111,8 @@ class MaterialesController extends Controller
         $material->min_stock        = $request->input('stock');
         
         $material->update();
-        return redirect()->route('materiales.index')->with('success', 'Material actualizado correctamente');
+        Flasher::addSuccess('Material actualizado correctamente');
+        return redirect()->route('materiales.index');
     }
 
     /**

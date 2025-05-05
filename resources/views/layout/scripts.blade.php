@@ -21,7 +21,7 @@
  <script src="{{ asset('assets/js/script1.js') }}"></script>
  
 
- <script src="{{ asset('assets/js/notify/index.js') }}"></script>
+
 
 <!-- Status Update-->
  <script>

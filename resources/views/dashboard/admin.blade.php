@@ -189,11 +189,10 @@
 
 @section('scripts')
     <script src="{{ asset('assets/js/clock.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+  
     <script src="{{ asset('assets/js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
+    
+
     
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/dataTables.js') }}"></script>

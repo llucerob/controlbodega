@@ -8,12 +8,21 @@ use App\Http\Controllers\MaterialesController;
 
 use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\ProveedoresController;
+use Flasher\Laravel\Facade\Flasher;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
+
+
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/test-flasher', function () {
+    Flasher::addSuccess('Esto es una prueba');
+    return redirect('/');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

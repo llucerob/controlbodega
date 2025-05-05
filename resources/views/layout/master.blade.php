@@ -7,7 +7,8 @@
 </head>
 
 
-    <body onload="startTime()">
+    <body>
+    
   
       
     <!-- loader starts-->
@@ -54,7 +55,7 @@
     @include('layout.scripts')
    
     
-    
+    @flasher
 </body>
 
 </html>
