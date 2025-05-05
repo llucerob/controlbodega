@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medida;
+use Flasher\Laravel\Facade\Flasher;
 
 class MedidasController extends Controller
 {

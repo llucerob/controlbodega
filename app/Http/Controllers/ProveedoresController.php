@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
 use App\Models\Medidas;
+use Flasher\Laravel\Facade\Flasher;
 
 
 
