@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/jquery.dataTables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/dataTables.bootstrap5.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/daterange-picker.css')}}">
 @endsection
 
 @section('main_content')
@@ -43,9 +42,11 @@
                                 <h5>Valorizar Actividad " {{$actividad->nombre}} " en {{$actividad->ubicacion}} </h5>
                                 <h4>del {{$actividad->inicio}} al {{$actividad->fin}}</h4>
                             </div>
+                            @if($actividad->estado != 'valorizado')
                             <div class="col-md-2 text-right">
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar Trabajo</button>
                             </div>
+                            @endif
                         </div>
                                             
                         
@@ -139,7 +140,7 @@
                                 </div>
                             </div>
                             
-                            <button type="submit" class="btn btn-success">Valorizar Actividad</button>
+                            <button type="submit" class="mt-3 btn btn-success">Valorizar Actividad</button>
                         </form>
                         @endif
                         
