@@ -51,11 +51,12 @@
 
         
     </div>
+    @flasher
     
     @include('layout.scripts')
    
     
-    @flasher
+    
 </body>
 
 </html>
