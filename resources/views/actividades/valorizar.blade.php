@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     
-                    <div class="card-footer text-right">
+                    <div class="card-footer text-left">
                         @if($actividad->valorizado == 'si' )
                             <h5>Esta actividad ya fue valorizada</h5>
                         @elseif($actividad->estado == 'en proceso')
