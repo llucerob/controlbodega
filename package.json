@@ -19,6 +19,7 @@
         "vite": "^6.0.11"
     },
     "dependencies": {
-        "@flasher/flasher": "^2.1.5"
+        "@flasher/flasher": "^2.1.5",
+        "@flasher/flasher-sweetalert": "^2.1.5"
     }
 }

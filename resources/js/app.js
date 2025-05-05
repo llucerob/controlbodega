@@ -1,5 +1,7 @@
 import './bootstrap';
-import '@flasher/flasher';
+import '@flasher/flasher-sweetalert';
+
+
 
 import Alpine from 'alpinejs';
 
