@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Models\Trabajo;
 use Flasher\Laravel\Facade\Flasher;
+use Flasher\Prime\FlasherInterface;
 
 class ActividadesController extends Controller
 {
@@ -338,7 +339,7 @@ foreach($ocupados as $p){
  
          $actividad->update();
  
-         Flasher::addSuccess('Se ha actualizado la actividad correctamente');
+         $flasher->success('Se ha editado la actividad correctamente');
          return redirect('listar-actividades');
     }
 
@@ -366,7 +367,7 @@ foreach($ocupados as $p){
 
         }elseif($cantidad > 0)
         {
-            Flasher::addInfo('No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
+            app('flasher')->error('No se puede cerrar la actividad, hay materiales por recibir o entregar en bodega');
             return redirect()->route('actividades.index', $actividad->id);
         }elseif($actividad->estado != 'en proceso')
         {
