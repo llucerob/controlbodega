@@ -15,6 +15,8 @@
  <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
 
  <script src="{{ asset('assets/js/header-slick.js') }}"></script>
+
+ <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
  @yield('scripts')
  
  <script src="{{ asset('assets/js/script.js') }}"></script>
