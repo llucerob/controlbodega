@@ -14,6 +14,7 @@
  <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
  <script src="{{ asset('assets/js/sidebar-pin.js') }}"></script>
  <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+ <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
 
  <script src="{{ asset('assets/js/header-slick.js') }}"></script>
  @yield('scripts')
