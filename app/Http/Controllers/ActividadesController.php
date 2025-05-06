@@ -244,8 +244,8 @@ foreach($ocupados as $p){
 
         }
 
-
-        return redirect('dashboard')->with('success', 'se ha creado una nueva actividad');
+        Flasher::addSuccess('Se ha creado la actividad correctamente');
+        return redirect('dashboard');
 
     }
 
@@ -338,8 +338,8 @@ foreach($ocupados as $p){
  
          $actividad->update();
  
- 
-         return redirect('listar-actividades')->with('success', 'Se ha actualizado el registro');
+         Flasher::addSuccess('Se ha actualizado la actividad correctamente');
+         return redirect('listar-actividades');
     }
 
     public function cerrar(Request $request){
@@ -366,11 +366,11 @@ foreach($ocupados as $p){
 
         }elseif($cantidad > 0)
         {
-            flash()->info('No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
+            Flasher::addInfo('No se puede cerrar la actividad, Hay materiales por recibir o devolver para esta actividad');
             return redirect()->route('actividades.index', $actividad->id);
         }elseif($actividad->estado != 'en proceso')
         {
-            flash()->info('La actividad ya se encuentra cerrada');
+            Flasher::addInfo('La actividad ya se encuentra cerrada');
             return redirect()->route('actividades.index', $actividad->id);
         }else
         {
@@ -391,8 +391,8 @@ foreach($ocupados as $p){
            //luego de cerrar la actividad, si hay elementos por devolver se envia a la devolucion
    
            
-   
-               return redirect('listar-actividades')->with('success', 'se ha cerrado la actividad correctamente');
+           Flasher::addSuccess('Se ha cerrado la actividad correctamente');
+               return redirect('listar-actividades');
    
            
         }
@@ -430,8 +430,8 @@ foreach($ocupados as $p){
         $actividad->estado = 'valorizado';
         $actividad->valorizado = 'si';
         $actividad->update();
-
-        return redirect()->route('actividades.trabajosrealizados')->with('success', 'Se ha agregado cotizacion a la actividad');
+        Flasher::addSuccess('Se ha valorizado la actividad correctamente');
+        return redirect()->route('actividades.trabajosrealizados');
 
    
     }
@@ -452,8 +452,8 @@ foreach($ocupados as $p){
 
         $actividad->estado = 'en proceso';
         $actividad->update();
-
-        return redirect()->route('actividades.index')->with('success', 'Se ha reactivado la actividad');
+        Flasher::addSuccess('Se ha reactivado la actividad correctamente');
+        return redirect()->route('actividades.index');
 
     }
     public function agregartrabajo(Request $request, $id){
@@ -466,8 +466,8 @@ foreach($ocupados as $p){
         $trabajo->save();
 
        
-
-        return redirect()->route('actividades.valorizar', $id)->with('success', 'Se ha agregado un nuevo trabajo a la actividad');
+        Flasher::addSuccess('Se ha agregado un nuevo trabajo a la actividad');
+        return redirect()->route('actividades.valorizar', $id);
 
     }
 }

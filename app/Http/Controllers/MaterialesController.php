@@ -78,7 +78,8 @@ class MaterialesController extends Controller
         $newMaterial->medida            = $request->input('medida');
         $newMaterial->min_stock         = $request->input('stock');
         $newMaterial->save();
-        return redirect()->route('materiales.index')->with('success', 'Material creado correctamente');
+        Flasher::addSuccess('Material creado correctamente');
+        return redirect()->route('materiales.index');
     }
 
     /**
@@ -122,7 +123,8 @@ class MaterialesController extends Controller
     {
         $material = Material::findOrFail($id);
         $material->delete();
-        return redirect()->route('materiales.index')->with('success', 'Material eliminado correctamente');
+        Flasher::addSuccess('Material eliminado correctamente');
+        return redirect()->route('materiales.index');
     }
 
     public function vistacompra($id)
@@ -223,8 +225,9 @@ class MaterialesController extends Controller
         $material->cantidad = $material->cantidad + $cantidad;
 
         $material->update();
+        Flasher::addSuccess('Compra registrada correctamente');
 
-        return redirect()->route('materiales.index')->with('success', 'Compra registrada correctamente');
+        return redirect()->route('materiales.index');
     }
 
 
@@ -343,7 +346,8 @@ class MaterialesController extends Controller
         }
         $actividad->reservados()->detach($materiales);
         //dd($actividad->reservados);
-        return redirect()->route('materiales.reservados')->with('success', 'Material entregado correctamente');
+        Flasher::addSuccess('Material entregado correctamente');
+        return redirect()->route('materiales.reservados');
 
     }
 
@@ -412,8 +416,8 @@ class MaterialesController extends Controller
             }
         
                
-
-        return redirect()->route('actividades.index')->with('success', 'Material reservado correctamente');
+            Flasher::addSuccess('Material reservado correctamente');
+        return redirect()->route('actividades.index');
     }
 
     public function consultamaterial($id){
@@ -519,8 +523,8 @@ class MaterialesController extends Controller
             $material->cantidad = $material->cantidad - $o['cantidad'];
             $material->update();
         }
-
-        return redirect()->route('actividades.index')->with('success', 'Se ha generado devolucion de los materiales correctamente');
+        Flasher::addSuccess('Se ha realizado una devolucion correctamente');
+        return redirect()->route('actividades.index');
     }
 
     public function recibirdevolucion(){
@@ -578,8 +582,8 @@ class MaterialesController extends Controller
 
         }
 
-
-        return redirect()->route('materiales.index')->with('success', 'Se ha realizado una devolucion correctamente a la bodega');
+        Flasher::addSuccess('Se ha realizado una devolucion correctamente a la bodega');
+        return redirect()->route('materiales.index');
 
     }
 

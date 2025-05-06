@@ -36,8 +36,8 @@ class MedidasController extends Controller
         $newMedida->nombre = $request->nombre;
         $newMedida->abreviatura = $request->abreviacion;
         $newMedida->save();
-        
-        return redirect()->route('medidas.index')->with('success', 'Medida creada correctamente');
+        Flasher::addSuccess('Medida creada correctamente');
+        return redirect()->route('medidas.index');
     }
 
     /**
@@ -72,9 +72,11 @@ class MedidasController extends Controller
         $medida = Medida::find($id);
         if ($medida) {
             $medida->delete();
-            return redirect()->route('medidas.index')->with('success', 'Medida eliminada correctamente');
+            Flasher::addSuccess('Medida eliminada correctamente');
+            return redirect()->route('medidas.index');
         } else {
-            return redirect()->route('medidas.index')->with('error', 'Medida no encontrada');
+            Flasher::addError('Medida no encontrada');
+            return redirect()->route('medidas.index');
         }
     }
 }

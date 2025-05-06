@@ -73,7 +73,8 @@ class ProveedoresController extends Controller
         $proveedor->nombre_contacto = $request->input('contacto');
 
         $proveedor->save();
-        return redirect()->route('proveedores.index')->with('success', 'Proveedor creado exitosamente.');
+        Flasher::addSuccess('Proveedor creado correctamente');
+        return redirect()->route('proveedores.index');
 
     }
 
@@ -108,7 +109,8 @@ class ProveedoresController extends Controller
         $proveedor->nombre_contacto = $request->input('nombre_contacto');
 
         $proveedor->save();
-        return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado exitosamente.');
+        Flasher::addSuccess('Proveedor actualizado correctamente');
+        return redirect()->route('proveedores.index');
     }
 
     /**
@@ -119,11 +121,11 @@ class ProveedoresController extends Controller
         $proveedor = Proveedor::findOrFail($id);
         if ($proveedor) {
             $proveedor->delete();
-            
-            return redirect()->route('proveedores.index')->with('success', 'Proveedor eliminado exitosamente.');
+            Flasher::addSuccess('Proveedor eliminado correctamente');
+            return redirect()->route('proveedores.index');
         } else {
-            
-            return redirect()->route('proveedores.index')->with('warning', 'Proveedor no ha sido eliminado');;
+            Flasher::addError('Proveedor no ha sido eliminado');
+            return redirect()->route('proveedores.index');
         }
     }
 
