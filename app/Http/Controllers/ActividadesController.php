@@ -307,8 +307,7 @@ foreach($ocupados as $p){
     {
         $actividad = Actividad::findOrFail($id);
 
-        $flasher = new FlasherInterface;
-
+    
  
         $actividad->nombre       = $request->input('nombre');
         $actividad->ubicacion    = $request->input('ubicacion');
@@ -340,7 +339,7 @@ foreach($ocupados as $p){
  
          $actividad->update();
  
-         $flasher->success('Se ha editado la actividad correctamente');
+         Flasher::addSuccess('Se ha editado la actividad correctamente');
          return redirect('listar-actividades');
     }
 
@@ -368,7 +367,7 @@ foreach($ocupados as $p){
 
         }elseif($cantidad > 0)
         {
-            app('flasher')->error('No se puede cerrar la actividad, hay materiales por recibir o entregar en bodega');
+            Flasher::addInfo('No se puede cerrar la actividad, hay materiales por recibir o entregar en bodega');
             return redirect()->route('actividades.index', $actividad->id);
         }elseif($actividad->estado != 'en proceso')
         {
