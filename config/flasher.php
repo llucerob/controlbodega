@@ -6,7 +6,7 @@ use Flasher\Prime\Configuration;
 
 return Configuration::from([
     // Default notification library (e.g., 'flasher', 'toastr', 'noty', 'notyf', 'sweetalert')
-    'default' => 'sweetalert',
+    'default' => 'toastr',
 
     // Path to the main PHPFlasher JavaScript file
     'main_script' => '/vendor/flasher/flasher.min.js',
