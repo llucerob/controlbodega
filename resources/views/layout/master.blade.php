@@ -57,7 +57,26 @@
     @include('layout.scripts')
    
     
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("🔍 DOMContentLoaded disparado");
+
+        setTimeout(() => {
+            console.log("⌛ Intentando ejecutar flasher luego de 300ms");
+            try {
+                if (window.flasher) {
+                    console.log("✅ window.flasher detectado");
+                    console.log("📦 Plugins:", window.flasher.plugins);
+                    window.flasher.render();
+                } else {
+                    console.warn("⚠️ window.flasher no disponible");
+                }
+            } catch (e) {
+                console.error("💥 Error ejecutando flasher:", e);
+            }
+        }, 300);
+    });
+</script>
 </body>
 
 </html>
