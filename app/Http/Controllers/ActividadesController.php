@@ -11,8 +11,8 @@ use Yajra\Datatables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Models\Trabajo;
-//use Flasher\Laravel\Facade\Flasher;
-//use Flasher\Prime\FlasherInterface;
+use Flasher\Laravel\Facade\Flasher;
+use Flasher\Prime\FlasherInterface;
 
 class ActividadesController extends Controller
 {
