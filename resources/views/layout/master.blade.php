@@ -124,7 +124,13 @@
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
 
-   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.flasher) {
+                window.flasher.render();
+            }
+        });
+    </script>
     
   
 </body>
