@@ -51,6 +51,14 @@
 
         
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (flasher && typeof flasher.render === 'function') {
+                flasher.render();
+            }
+        });
+    </script>
     
     @include('layout.scripts')
    
