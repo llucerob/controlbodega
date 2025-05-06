@@ -51,7 +51,7 @@
 
         
     </div>
-    @flasher
+   
     
     @include('layout.scripts')
    

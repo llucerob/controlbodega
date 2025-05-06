@@ -19,9 +19,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/test-flasher', function () {
-    Flasher::addSuccess('Esto es una prueba');
-    return redirect('/');
+Route::get('/flasher-test', function () {
+    Flasher::addSuccess('Esto es una prueba visual de Flasher');
+    return view('flasher-test');
 });
 
 Route::middleware('auth')->group(function () {
