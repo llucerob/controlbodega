@@ -307,7 +307,8 @@ foreach($ocupados as $p){
     {
         $actividad = Actividad::findOrFail($id);
 
-        
+        $flasher = new FlasherInterface;
+
  
         $actividad->nombre       = $request->input('nombre');
         $actividad->ubicacion    = $request->input('ubicacion');

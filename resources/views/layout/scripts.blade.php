@@ -1,6 +1,7 @@
  <!-- latest jquery-->
  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-
+ <!-- Bootstrap js-->
+ <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
  <!-- feather icon js-->
  <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
  <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
@@ -15,8 +16,6 @@
  <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
 
  <script src="{{ asset('assets/js/header-slick.js') }}"></script>
-
- <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
  @yield('scripts')
  
  <script src="{{ asset('assets/js/script.js') }}"></script>
