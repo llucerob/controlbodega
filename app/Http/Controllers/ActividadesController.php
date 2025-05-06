@@ -339,8 +339,8 @@ foreach($ocupados as $p){
  
          $actividad->update();
  
-         Flasher::addSuccess('Se ha editado la actividad correctamente');
-         return redirect('listar-actividades');
+         //Flasher::addSuccess('Se ha editado la actividad correctamente');
+         return redirect('listar-actividades')->with('success', 'Actividad editada correctamente');
     }
 
     public function cerrar(Request $request){
