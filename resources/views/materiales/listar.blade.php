@@ -96,89 +96,58 @@
 
 
     <script>
-        $(document).ready(function(){
-
-            var tabla = $('#materiales').DataTable({
-                language: {
-                        url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
-                     },
-                
-                    ajax: '{{route('materiales.ajax')}}',
-                    columns: [
-                        {data: 'nombre'},
-                        {data: 'marca'},
-                        {data: 'cantidad'},
-                        {data: 'valor_unitario'},
-                        {
-                            data: null,
-                            defaultContent: '<button class="editar btn btn-primary btn-sm m-1" title="editar"><i class="fa-solid fa-pencil"></i></button><button class="comprar btn btn-success btn-sm m-1" title="comprar"><i class="fa-solid fa-dollar"></i></button><button class="listarcompras btn btn-warning btn-sm m-1" title="listarcompras"><i class="fa-solid fa-shopping-basket"></i></button><button class="rutamaterial btn btn-secondary btn-sm m-1" title="rutamaterial"><i class="fa-solid fa-book"></i></button>',
-                           
-                                
-                            },
-                        
-                        
-                        ],               
-                        
-                });
-
-            //obtener_data_eliminar('#materiales', tabla);
-            obtener_data_editar('#materiales', tabla);
-            obtener_data_comprar('#materiales',tabla);
-            obtener_data_listarcompras('#materiales',tabla);
-            obtener_data_rutamaterial('#materiales',tabla);
-           
-            
+    $(document).ready(function () {
+        const tabla = $('#materiales').DataTable({
+            language: {
+                url: '{{ asset('assets/js/datatable/datatables/es-ES.json') }}',
+            },
+            ajax: '{{ route('materiales.ajax') }}',
+            deferRender: true, // ✅ Render diferido (mejora velocidad en grandes volúmenes)
+            processing: true,  // ✅ Muestra spinner de carga
+            serverSide: false, // ❌ Por ahora está en cliente, activalo solo si backend filtra/pagina
+            columns: [
+                { data: 'nombre' },
+                { data: 'marca' },
+                { data: 'cantidad' },
+                { data: 'valor_unitario' },
+                {
+                    data: null,
+                    orderable: false, // ✅ Evita que ordene por botones (sin sentido)
+                    searchable: false, // ✅ No busca en esta columna
+                    render: function (data, type, row) {
+                        return `
+                            <button class="editar btn btn-primary btn-sm m-1" title="Editar">
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                            <button class="comprar btn btn-success btn-sm m-1" title="Comprar">
+                                <i class="fa-solid fa-dollar"></i>
+                            </button>
+                            <button class="listarcompras btn btn-warning btn-sm m-1" title="Listar compras">
+                                <i class="fa-solid fa-shopping-basket"></i>
+                            </button>
+                            <button class="rutamaterial btn btn-secondary btn-sm m-1" title="Ruta material">
+                                <i class="fa-solid fa-book"></i>
+                            </button>
+                        `;
+                    }
+                }
+            ]
         });
 
-       /* 
-        <button class="eliminar btn btn-danger btn-sm m-1" title="eliminar"><i class="fas fa-trash-alt"></i></button>
-        var obtener_data_eliminar = function(tbody, tabla){
-            $(tbody).on ('click', 'button.eliminar',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "destroy-proveedor/"+data.id;
-               
-                
-            })
-        }*/
-        var obtener_data_comprar = function(tbody, tabla){
-            $(tbody).on ('click', 'button.comprar',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "comprar-material/"+data.id;
-               
-                
-            })
-        }
-        var obtener_data_editar = function(tbody, tabla){
-            $(tbody).on ('click', 'button.editar',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "editar-material/"+data.id;
-               
-                
-            })
-        }
+        // Delegación de eventos
+        obtener_data(tabla, 'editar', 'editar-material');
+        obtener_data(tabla, 'comprar', 'comprar-material');
+        obtener_data(tabla, 'listarcompras', 'compras-material');
+        obtener_data(tabla, 'rutamaterial', 'consulta-material');
+    });
 
-        var obtener_data_listarcompras = function(tbody, tabla){
-            $(tbody).on ('click', 'button.listarcompras',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "compras-material/"+data.id;
-               
-                
-            })
-        }
-        var obtener_data_rutamaterial = function(tbody, tabla){
-            $(tbody).on ('click', 'button.rutamaterial',function(){
-                var data = tabla.row($(this).parents('tr')).data();
-                location.href = "consulta-material/"+data.id;
-               
-                
-            })
-        }
-       
+    function obtener_data(tabla, claseBoton, ruta) {
+        $('#materiales').on('click', `button.${claseBoton}`, function () {
+            const data = tabla.row($(this).parents('tr')).data();
+            location.href = `${ruta}/${data.id}`;
+        });
+    }
+</script>
 
-
-        
-
-
-    </script>
 
 @endsection
