@@ -42,7 +42,14 @@
                
                 @yield('main_content')
          
-                
+               @if(session()->has('success') || session()->has('danger') || session()->has('warning') || session()->has('info'))
+                    <div class="container mt-3">
+                        <div class="alert alert-{{ session('success') ? 'Exito' : (session('danger') ? 'Peligro' : (session('warning') ? 'Atención' : 'Info')) }} alert-dismissible fade show" role="alert">
+                            {{ session('success') ?? session('danger') ?? session('warning') ?? session('info') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                        </div>
+                    </div>
+                @endif 
             </div>
 
             @include('layout.footer')
@@ -52,18 +59,20 @@
         
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (flasher && typeof flasher.render === 'function') {
-                flasher.render();
-            }
-        });
-    </script>
+   
     
     @include('layout.scripts')
    
     
-  
+    <script>
+        setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if(alert){
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }
+        }, 5000); // 5 segundos
+    </script>
 </body>
 
 </html>

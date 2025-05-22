@@ -44,9 +44,7 @@ class MaterialesController extends Controller
         }
 
         //dd($arr);
-        return DataTables($arr)->tojson();
-        ;
-        
+        return DataTables($arr)->tojson();        
     }
 
     /**

@@ -1,5 +1,5 @@
 import './bootstrap';
-import '@flasher/flasher-sweetalert';
+
 
 
 
