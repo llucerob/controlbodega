@@ -11,6 +11,7 @@ use App\Models\Compra;
 use App\Models\Actividad;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Ocupado;
+use Yajra\Datatables\Facades\DataTables;
 use Flasher\Laravel\Facade\Flasher;
 
 
