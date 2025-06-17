@@ -53,7 +53,10 @@
                                         
                                     </tr>
                                 </thead>
-                                <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
+                                
+                            </table>
+
+                            <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -76,7 +79,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </table>
                         </div>
                     </div>
 
