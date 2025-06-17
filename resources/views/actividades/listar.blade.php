@@ -155,7 +155,7 @@
                             data: null,
                             render: function(data, type, row) {
                                 var render;
-                                if(data.estado !== 'valorizado'){
+                                if(data.estado == 'en proceso'){
                                     render =`
                                     
                                     <button class="editar btn btn-primary btn-sm m-1" title="editar">
