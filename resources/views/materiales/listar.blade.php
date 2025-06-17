@@ -56,29 +56,7 @@
                                 
                             </table>
 
-                            <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Atención</h5>
-                                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                        
-                                            <div class="modal-body"> 
-                                                <div class="modal-toggle-wrapper">  
-                                                  <div class="modal-img text-center">
-                                                     <img src="{{asset('assets/images/gif/danger.gif')}}"  width="100px" alt="error">
-                                                  </div>
-                                                  <h4 class="text-center">¿Realmente desea Eliminar este proveedor?</h4>
-                                                  <p class="text-center">Esta acción no se puede deshacer</p>
-                                                  
-                                                    <a class="btn btn-danger d-flex m-auto pb-10" href="">Eliminar</a>
-                                                 
-                                                </div>
-                                            </div>                                                   
-                                        </div>
-                                    </div>
-                                </div>
+                            
                         </div>
                     </div>
 
