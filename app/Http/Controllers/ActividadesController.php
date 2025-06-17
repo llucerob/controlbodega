@@ -452,6 +452,7 @@ foreach($ocupados as $p){
         $actividad = Actividad::findOrFail($id);
 
         $actividad->estado = 'en proceso';
+        $actividad->valorizado = 'no';
         $actividad->update();
         Flasher::addSuccess('Se ha reactivado la actividad correctamente');
         return redirect()->route('actividades.index');
